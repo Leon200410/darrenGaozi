@@ -13,6 +13,12 @@ const Slide0: React.FC = () => {
       });
 
       tl.add({
+        targets: '.slide0-logo',
+        opacity: [0, 1],
+        translateY: [-20, 0],
+        duration: 800,
+      })
+      .add({
         targets: '.slide0-bg-circle',
         scale: [0.5, 1],
         opacity: [0, 0.15],
@@ -54,6 +60,11 @@ const Slide0: React.FC = () => {
 
   return (
     <div ref={containerRef} className="w-full h-full flex flex-col items-center justify-center relative overflow-hidden">
+      {/* Logo */}
+      <div className="absolute top-12 left-12 z-20">
+        <img src="/logo-white.png" alt="Logo" className="slide0-logo opacity-0 h-10 md:h-12 object-contain" />
+      </div>
+
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
         <div className="slide0-bg-circle w-[800px] h-[800px] rounded-full border border-[#8A7CF5] opacity-0"></div>

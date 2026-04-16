@@ -13,6 +13,12 @@ const Slide8: React.FC = () => {
       });
 
       tl.add({
+        targets: '.slide8-logo',
+        opacity: [0, 1],
+        translateY: [-20, 0],
+        duration: 800,
+      })
+      .add({
         targets: '.slide8-title',
         translateY: [30, 0],
         opacity: [0, 1],
@@ -38,6 +44,11 @@ const Slide8: React.FC = () => {
   return (
     <div ref={containerRef} className="w-full h-full flex flex-col items-center justify-center relative overflow-hidden px-[5%] py-8 md:py-12">
       
+      {/* Logo */}
+      <div className="absolute top-12 left-12 z-20">
+        <img src="/logo-white.png" alt="Logo" className="slide8-logo opacity-0 h-10 md:h-12 object-contain" />
+      </div>
+
       {/* Main Title Group */}
       <div className="text-center w-full flex flex-col items-center mb-16 z-10">
         <h2 className="slide8-title text-6xl md:text-[80px] font-black text-[#F2F2F2] leading-[1.1] opacity-0 tracking-tight drop-shadow-md mb-8">

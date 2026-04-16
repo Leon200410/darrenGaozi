@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import anime from 'animejs';
+import { presentationContent } from '../../content/presentation';
 
 const Slide0: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const content = presentationContent.slide0;
 
   useEffect(() => {
     if (containerRef.current) {
@@ -63,27 +65,31 @@ const Slide0: React.FC = () => {
 
       <div className="z-10 flex flex-col items-center text-center">
         <div className="slide0-badge opacity-0 mb-8 px-4 py-1.5 rounded-full border border-[#8A7CF5]/40 bg-[#8A7CF5]/10 text-[#8A7CF5] text-xs font-mono tracking-[0.2em] uppercase">
-          Strategy To System · Stage Narrative
+          {content.badge}
         </div>
 
         <h1 className="slide0-title opacity-0 text-6xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#F5F7FA] to-[#A0AAB2] tracking-tight leading-tight mb-6">
-          从策略驱动到<span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8A7CF5] to-[#58E3C2]">体系驱动</span>
+          {content.title.prefix}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8A7CF5] to-[#58E3C2]">
+            {content.title.highlight}
+          </span>
         </h1>
 
         <div className="slide0-line opacity-0 h-[2px] bg-gradient-to-r from-transparent via-[#EBCB8B] to-transparent mb-6"></div>
 
         <h2 className="slide0-subtitle opacity-0 text-2xl md:text-3xl font-light text-gray-300 tracking-wide max-w-3xl leading-relaxed">
-          量化机构如何保持竞争力与持续生产 <span className="font-semibold text-[#EBCB8B]">Alpha</span>
+          {content.subtitle.prefix}{' '}
+          <span className="font-semibold text-[#EBCB8B]">{content.subtitle.highlight}</span>
         </h2>
       </div>
 
       <div className="absolute bottom-16 w-full flex justify-between px-24 z-10 text-xs font-mono text-gray-500 uppercase tracking-widest">
         <div className="slide0-footer opacity-0 flex items-center gap-3">
           <span className="w-2 h-2 rounded-full bg-[#58E3C2] animate-pulse"></span>
-          Institutional Quantitative Framework
+          {content.footer.left}
         </div>
         <div className="slide0-footer opacity-0">
-          ForthTech Confidential
+          {content.footer.right}
         </div>
       </div>
     </div>

@@ -1,8 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import anime from 'animejs';
+import { ArrowRight, Building2, Landmark, ShieldCheck, TrendingUp } from 'lucide-react';
+import { presentationContent } from '../../content/presentation';
 
 const Slide6: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const content = presentationContent.slide6;
+  const trendIcons = [TrendingUp, Building2, ShieldCheck, Landmark];
+  const trendAccents = ['#F6D38B', '#7FE7D8', '#8AA5FF', '#F2A65A'];
 
   useEffect(() => {
     if (containerRef.current) {
@@ -18,144 +23,166 @@ const Slide6: React.FC = () => {
         delay: 200,
       })
       .add({
-        targets: '.slide6-desc',
+        targets: '.slide6-panel',
+        scale: [0.96, 1],
         opacity: [0, 1],
         duration: 800,
-      }, '-=400')
+      }, '-=420')
       .add({
-        targets: '.slide6-chart',
-        scale: [0.9, 1],
-        opacity: [0, 1],
-        duration: 800,
-      }, '-=600')
-      .add({
-        targets: '.slide6-item',
-        translateX: [50, 0],
+        targets: '.slide6-copy',
+        translateY: [18, 0],
         opacity: [0, 1],
         duration: 600,
-        delay: anime.stagger(150),
-      }, '-=600');
+        delay: anime.stagger(90),
+      }, '-=520')
+      .add({
+        targets: '.slide6-step',
+        scale: [0.92, 1],
+        opacity: [0, 1],
+        duration: 600,
+        delay: anime.stagger(100),
+      }, '-=420')
+      .add({
+        targets: '.slide6-item',
+        translateX: [40, 0],
+        opacity: [0, 1],
+        duration: 600,
+        delay: anime.stagger(120),
+      }, '-=520')
+      .add({
+        targets: '.slide6-chip',
+        scale: [0.92, 1],
+        opacity: [0, 1],
+        duration: 450,
+        delay: anime.stagger(90),
+      }, '-=360');
     }
   }, []);
 
-  const points = [
-    "资金流入增强，财富承接能力提升。",
-    "家办数量创新高，财富管理需求快速上升。",
-    "地缘不确定性提升时，香港作为配置平台更具吸引力。",
-    "优质管理人、首仓能力与可前站化策略供给同步稀缺。"
-  ];
-
   return (
     <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-[5%] py-8 md:py-12 relative">
-      <div className=" slide6-title opacity-0">
-        <h2 className="text-4xl text-center font-bold text-[#F5F7FA] leading-tight m-auto">
-          六、香港机遇
-        </h2>
+      <div className="absolute inset-0 pointer-events-none">
+        <div className="absolute top-24 left-1/4 w-72 h-72 bg-[#F6D38B]/8 blur-[110px] rounded-full"></div>
+        <div className="absolute bottom-16 right-1/4 w-80 h-80 bg-[#7FE7D8]/6 blur-[120px] rounded-full"></div>
       </div>
 
-      {/* <div className="absolute top-10 right-12 w-5/12 slide6-desc opacity-0 flex justify-end">
-        <div className="border border-rose-500/80 rounded-lg py-3 px-6 shadow-[inset_0_0_15px_rgba(244,63,94,0.1)] inline-block">
-          <p className="text-sm md:text-[15px] text-[#F5F7FA] leading-relaxed text-center font-light tracking-wide">
-            香港不只是提供一个窗口，而是充当一个让新一代的<br/>能力被激活、实现成长的平台。
-          </p>
-        </div>
-      </div> */}
+      <h2 className="slide6-title text-4xl font-bold text-[#F5F7FA] mb-10 opacity-0 text-center leading-tight relative z-10">
+        {content.title}
+      </h2>
 
-      <div className="flex w-full gap-12 mt-10">
-        {/* Left: Chart Module */}
-        <div className="w-5/12 flex flex-col justify-center">
-          <div className="slide6-chart opacity-0 bg-[#1A1F2E]/60 p-8 rounded-2xl border border-gray-700/50 backdrop-blur-sm h-full flex flex-col">
-            <h3 className="text-xs font-semibold text-[#EBCB8B] mb-2 tracking-widest uppercase">OPPORTUNITY MAP</h3>
-            <h4 className="text-[#F5F7FA] font-bold text-base mb-8">需求上升与供给略微滞后发生</h4>
-            
-            <div className="relative w-full h-64 flex mt-auto">
-              {/* Mock Scatter/Line Chart */}
-              <div className="w-1/3 relative h-full border-r border-gray-700/50">
-                 {/* Y-axis labels */}
-                 <div className="absolute -left-6 top-0 text-[10px] text-gray-400">100</div>
-                 <div className="absolute -left-4 top-1/4 text-[10px] text-gray-400">80</div>
-                 <div className="absolute -left-4 top-2/4 text-[10px] text-gray-400">60</div>
-                 <div className="absolute -left-4 top-3/4 text-[10px] text-gray-400">40</div>
-                 <div className="absolute -left-4 bottom-0 text-[10px] text-gray-400">20</div>
-                 
-                 {/* X-axis labels */}
-                 <div className="absolute bottom-[-20px] left-0 text-[10px] text-gray-400">20</div>
-                 <div className="absolute bottom-[-20px] left-1/4 text-[10px] text-gray-400">40</div>
-                 <div className="absolute bottom-[-20px] left-2/4 text-[10px] text-gray-400">60</div>
-                 <div className="absolute bottom-[-20px] left-3/4 text-[10px] text-gray-400">80</div>
-                 <div className="absolute bottom-[-20px] right-0 text-[10px] text-gray-400">100</div>
+      <div className="relative z-10 flex w-full gap-10">
+        <div className="w-5/12 flex flex-col">
+          <div className="slide6-panel opacity-0 bg-[#1A1F2E]/60 p-7 rounded-2xl border border-gray-700/50 backdrop-blur-sm h-full flex flex-col">
+            <div className="flex items-center justify-between mb-5">
+              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#F6D38B]/20 bg-[#F6D38B]/8 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#F6D38B]">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#F6D38B]"></span>
+                {content.badge}
+              </span>
+              <span className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.22em]">{content.thesisLabel}</span>
+            </div>
 
-                 {/* Grid lines */}
-                 <div className="absolute top-1/4 left-0 right-0 border-b border-gray-700/30"></div>
-                 <div className="absolute top-2/4 left-0 right-0 border-b border-gray-700/30"></div>
-                 <div className="absolute top-3/4 left-0 right-0 border-b border-gray-700/30"></div>
-                 <div className="absolute top-0 bottom-0 left-3/4 border-r border-gray-700/30"></div>
+            <div className="slide6-copy opacity-0 rounded-2xl border border-white/8 bg-white/[0.03] p-5">
+              <p className="text-[22px] leading-[1.55] text-[#E8EDF6]">
+                {content.statement.prefix}
+                <span className="mx-2 font-semibold text-[#F6D38B]">{content.statement.highlight}</span>
+                {content.statement.suffix}
+              </p>
+            </div>
 
-                 {/* Scatter dots */}
-                 <div className="absolute bottom-[20%] left-[15%] w-4 h-4 bg-[#EBCB8B] rounded-full shadow-[0_0_10px_rgba(235,203,139,0.6)]"></div>
-                 <div className="absolute bottom-[35%] left-[30%] w-5 h-5 bg-[#EBCB8B] rounded-full shadow-[0_0_10px_rgba(235,203,139,0.6)]"></div>
-                 <div className="absolute bottom-[50%] left-[50%] w-6 h-6 bg-[#EBCB8B] rounded-full shadow-[0_0_10px_rgba(235,203,139,0.6)]"></div>
-                 <div className="absolute bottom-[75%] left-[70%] w-5 h-5 bg-[#EBCB8B] rounded-full shadow-[0_0_10px_rgba(235,203,139,0.6)]"></div>
-                 <div className="absolute bottom-[90%] right-[-12px] w-8 h-8 bg-[#EBCB8B] rounded-full shadow-[0_0_10px_rgba(235,203,139,0.6)] z-10 flex items-center justify-center">
-                    <span className="text-[8px] font-bold text-black">30</span>
-                 </div>
-                 
-                 <span className="absolute bottom-[75%] left-[85%] text-[10px] text-gray-300">25</span>
-                 <span className="absolute bottom-[50%] left-[65%] text-[10px] text-gray-300">10</span>
+            <div className="mt-5 flex items-center gap-3">
+              {content.steps.map((step, idx) => (
+                <React.Fragment key={step}>
+                  <div className="slide6-step opacity-0 flex-1 rounded-2xl border border-[#8AA5FF]/20 bg-[#10182A]/80 px-4 py-4 text-center">
+                    <div className="text-[10px] font-mono uppercase tracking-[0.22em] text-gray-500">0{idx + 1}</div>
+                    <div className="mt-2 text-xl font-bold text-[#F5F7FA]">{step}</div>
+                  </div>
+                  {idx < content.steps.length - 1 && (
+                    <ArrowRight className="slide6-step opacity-0 w-4 h-4 text-[#8AA5FF] flex-shrink-0" />
+                  )}
+                </React.Fragment>
+              ))}
+            </div>
+
+            <div className="mt-5 grid grid-cols-3 gap-3">
+              {content.scarcity.tags.map((tag) => (
+                <div
+                  key={tag}
+                  className="slide6-chip opacity-0 rounded-xl border border-gray-700/40 bg-[#0F1626]/70 px-3 py-3 text-center text-[12px] leading-5 text-[#DCE5F3]"
+                >
+                  {tag}
+                </div>
+              ))}
+            </div>
+
+            <div className="slide6-copy opacity-0 mt-5 rounded-2xl border border-[#F6D38B]/18 bg-[linear-gradient(135deg,rgba(246,211,139,0.08),rgba(246,211,139,0.02))] p-5">
+              <div className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#F6D38B] mb-2">
+                {content.scarcity.badge}
               </div>
+              <h3 className="text-lg font-bold text-[#FDF1D4] leading-snug mb-2">
+                {content.scarcity.title}
+              </h3>
+              <p className="text-[13px] leading-6 text-[#C9D3E2]">
+                {content.scarcity.description}
+              </p>
+              <p className="mt-3 text-[12px] font-medium text-[#F6D38B]">
+                {content.scarcity.footer}
+              </p>
+            </div>
 
-              <div className="w-2/3 relative h-full">
-                 {/* Right Y-axis labels */}
-                 <div className="absolute -left-2 top-0 text-[10px] text-gray-400">30</div>
-                 <div className="absolute -left-2 top-1/4 text-[10px] text-gray-400">75</div>
-                 <div className="absolute -left-2 top-2/4 text-[10px] text-gray-400">50</div>
-                 <div className="absolute -left-2 top-3/4 text-[10px] text-gray-400">25</div>
-                 <div className="absolute -left-2 bottom-0 text-[10px] text-gray-400">0</div>
-
-                 {/* Bottom X-axis labels */}
-                 <div className="absolute bottom-[-20px] left-0 text-[10px] text-gray-400">2022</div>
-                 <div className="absolute bottom-[-20px] left-1/4 text-[10px] text-gray-400">2023</div>
-                 <div className="absolute bottom-[-20px] left-2/4 text-[10px] text-gray-400">2024</div>
-                 <div className="absolute bottom-[-20px] left-3/4 text-[10px] text-gray-400">2025</div>
-                 <div className="absolute bottom-[-20px] right-0 text-[10px] text-gray-400">2026</div>
-
-                 {/* Line chart area */}
-                 <svg className="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
-                    <polygon points="10,75 100,25 100,100 10,100" fill="url(#gradBlue)" fillOpacity="0.2" />
-                    <line x1="10" y1="75" x2="100" y2="25" stroke="#8A7CF5" strokeWidth="1.5" />
-                    
-                    <polygon points="10,65 100,10 100,100 10,100" fill="url(#gradGold)" fillOpacity="0.2" />
-                    <line x1="10" y1="65" x2="100" y2="10" stroke="#EBCB8B" strokeWidth="2" />
-                    
-                    <defs>
-                      <linearGradient id="gradBlue" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#8A7CF5" stopOpacity="0.5"/>
-                        <stop offset="100%" stopColor="#8A7CF5" stopOpacity="0"/>
-                      </linearGradient>
-                      <linearGradient id="gradGold" x1="0" y1="0" x2="0" y2="1">
-                        <stop offset="0%" stopColor="#EBCB8B" stopOpacity="0.5"/>
-                        <stop offset="100%" stopColor="#EBCB8B" stopOpacity="0"/>
-                      </linearGradient>
-                    </defs>
-                 </svg>
+            <div className="mt-auto pt-5">
+              <div className="h-px w-full bg-gradient-to-r from-transparent via-white/12 to-transparent" />
+              <div className="mt-4 flex items-end gap-1.5 h-12">
+                {content.skyline.map((height, idx) => (
+                  <div
+                    key={`${height}-${idx}`}
+                    className="flex-1 rounded-t-md bg-gradient-to-t from-[#283247] to-[#4B556B]/60"
+                    style={{ height }}
+                  />
+                ))}
               </div>
             </div>
           </div>
         </div>
 
-        {/* Right: Bullet Cards */}
-        <div className="w-7/12 flex flex-col gap-4 justify-center">
-          {points.map((point, idx) => (
-            <div key={idx} className="slide6-item opacity-0 flex items-center space-x-4 bg-[#1A1F2E]/40 p-6 rounded-2xl border border-gray-700/30 shadow-lg">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#EBCB8B]/10 flex items-center justify-center border border-[#EBCB8B]/30">
-                {/* Flame/Droplet mock icon */}
-                <svg className="w-4 h-4 text-[#EBCB8B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                  <path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"></path>
-                </svg>
-              </div>
-              <p className="text-[#F5F7FA] text-base">{point}</p>
+        <div className="w-7/12 flex flex-col justify-center">
+          <div className="slide6-copy opacity-0 flex items-end justify-between mb-4 px-1">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.26em] text-[#7FE7D8]">{content.trendBadge}</p>
+              <h3 className="mt-2 text-[24px] font-bold text-[#F5F7FA]">{content.trendTitle}</h3>
             </div>
-          ))}
+            <p className="text-[11px] text-gray-500 uppercase tracking-[0.18em]">{content.trendNote}</p>
+          </div>
+
+          <div className="flex flex-col gap-4">
+            {content.trends.map((trend, idx) => {
+              const Icon = trendIcons[idx];
+
+              return (
+                <div
+                  key={trend.title}
+                  className="slide6-item opacity-0 flex items-start gap-4 bg-[#1A1F2E]/40 p-5 rounded-2xl border border-gray-700/30 shadow-lg"
+                >
+                  <div
+                    className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center border"
+                    style={{
+                      color: trendAccents[idx],
+                      borderColor: `${trendAccents[idx]}55`,
+                      backgroundColor: `${trendAccents[idx]}14`,
+                    }}
+                  >
+                    <Icon className="w-4 h-4" />
+                  </div>
+                  <div className="flex-shrink-0 w-10 pt-1 text-[11px] font-mono uppercase tracking-[0.22em] text-gray-500">
+                    0{idx + 1}
+                  </div>
+                  <div className="min-w-0">
+                    <h4 className="text-[21px] font-bold text-[#F5F7FA] leading-tight">{trend.title}</h4>
+                    <p className="mt-1.5 text-[13px] leading-6 text-gray-400">{trend.desc}</p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
     </div>

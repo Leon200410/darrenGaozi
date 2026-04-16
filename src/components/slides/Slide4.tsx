@@ -1,8 +1,10 @@
 import React, { useEffect, useRef } from 'react';
 import anime from 'animejs';
+import { presentationContent } from '../../content/presentation';
 
 const Slide4: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const content = presentationContent.slide4;
 
   useEffect(() => {
     if (containerRef.current) {
@@ -33,27 +35,17 @@ const Slide4: React.FC = () => {
     }
   }, []);
 
-  const conditions = [
-    { title: "可验证的战绩", desc: "Track Record" },
-    { title: "清晰可持续的 Alpha 来源", desc: "Strategy" },
-    { title: "执行闭环与风控体系", desc: "Execution / Risk" },
-    { title: "组织治理、流程与合规", desc: "Governance / Ops" },
-    { title: "可扩展的生产力与规模化能力", desc: "Scalability" },
-    { title: "标准化 SOP 与一致性交付", desc: "Operational" },
-    { title: "稳定一致的对外沟通与合作机制", desc: "Communication" }
-  ];
-
   return (
     <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-[5%] py-8 md:py-12">
       <h2 className="slide4-title text-4xl font-bold text-[#F5F7FA] mb-10 opacity-0 text-center leading-tight">
-        四、优秀管理人满足机构配置的条件
+        {content.title}
       </h2>
 
       <div className="flex w-full gap-12">
         {/* Left: Radar Chart Box */}
         <div className="w-5/12 flex flex-col justify-center">
           <div className="slide4-radar opacity-0 bg-[#1A1F2E]/60 p-8 rounded-2xl border border-gray-700/50 backdrop-blur-sm h-full flex flex-col items-center justify-center">
-            <h3 className="text-sm font-semibold text-[#EBCB8B] mb-10 tracking-widest w-full text-left">INSTITUTIONAL CHECKLIST: 机构关注的多维能力谱系</h3>
+            <h3 className="text-sm font-semibold text-[#EBCB8B] mb-10 tracking-widest w-full text-left">{content.radarTitle}</h3>
             <div className="relative w-64 h-64 flex items-center justify-center">
               {/* Radar Chart Mock (SVG Heptagon) */}
               <svg className="w-full h-full" viewBox="0 0 100 100">
@@ -79,12 +71,11 @@ const Slide4: React.FC = () => {
                 <circle cx="15" cy="35" r="2" fill="#EBCB8B"/>
               </svg>
               {/* Labels */}
-              <span className="absolute top-[-5%] text-xs text-gray-300">业绩</span>
-              <span className="absolute top-[20%] right-[-5%] text-xs text-gray-300">策略</span>
-              <span className="absolute bottom-[20%] right-[-5%] text-xs text-gray-300">执行</span>
-              <span className="absolute bottom-[-5%] text-xs text-gray-300">风控</span>
-              <span className="absolute bottom-[20%] left-[-5%] text-xs text-gray-300">合规</span>
-              <span className="absolute top-[20%] left-[-5%] text-xs text-gray-300">团队</span>
+              {content.radarLabels.map((label, idx) => (
+                <span key={idx} className={`absolute text-xs text-gray-300 ${label.positionClass}`}>
+                  {label.text}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -92,7 +83,7 @@ const Slide4: React.FC = () => {
         {/* Right: 7 Conditions */}
         <div className="w-7/12 flex flex-col items-center gap-y-3">
           <div className="grid grid-cols-2 gap-x-6 gap-y-3 w-full">
-            {conditions.slice(0, 6).map((item, idx) => (
+            {content.conditions.slice(0, 6).map((item, idx) => (
               <div key={idx} className="slide4-item opacity-0 flex items-center space-x-4 bg-[#1A1F2E]/40 p-4 rounded-xl border border-gray-700/30">
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#EBCB8B]/20 text-[#EBCB8B] flex items-center justify-center font-bold font-mono text-sm">
                   {idx + 1}
@@ -110,8 +101,8 @@ const Slide4: React.FC = () => {
                 7
               </div>
               <div>
-                <h3 className="text-sm font-semibold text-[#F5F7FA]">{conditions[6].title}</h3>
-                <p className="text-[10px] text-gray-400 font-mono mt-1">{conditions[6].desc}</p>
+                <h3 className="text-sm font-semibold text-[#F5F7FA]">{content.conditions[6].title}</h3>
+                <p className="text-[10px] text-gray-400 font-mono mt-1">{content.conditions[6].desc}</p>
               </div>
             </div>
           </div>

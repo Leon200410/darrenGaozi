@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-black text-white overflow-hidden;
+    margin: 0;
+    padding: 0;
+    user-select: none; /* Prevent text selection during presentation */
+  }
+
+  /* 12:3 aspect ratio container (4:1) */
+  #root {
+    @apply w-screen h-screen flex items-center justify-center bg-black;
+  }
+}
+
+.presentation-container {
+  aspect-ratio: 4 / 1;
+  @apply w-full max-h-screen relative overflow-hidden;
+}
+
+/* Custom scrollbar for some internal content if needed */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Hide Trae IDE Preview Widget */
+[id^="trae-"], [class*="trae-solo"] {
+  display: none !important;
+}

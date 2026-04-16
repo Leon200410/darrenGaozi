@@ -1,0 +1,124 @@
+import React, { useEffect, useRef } from 'react';
+import anime from 'animejs';
+
+const Slide4: React.FC = () => {
+  const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (containerRef.current) {
+      const tl = anime.timeline({
+        easing: 'easeOutQuart',
+      });
+
+      tl.add({
+        targets: '.slide4-title',
+        translateY: [-30, 0],
+        opacity: [0, 1],
+        duration: 800,
+        delay: 200,
+      })
+      .add({
+        targets: '.slide4-radar',
+        scale: [0.8, 1],
+        opacity: [0, 1],
+        duration: 800,
+      }, '-=400')
+      .add({
+        targets: '.slide4-item',
+        translateX: [50, 0],
+        opacity: [0, 1],
+        duration: 600,
+        delay: anime.stagger(100),
+      }, '-=600');
+    }
+  }, []);
+
+  const conditions = [
+    { title: "可验证的战绩", desc: "Track Record" },
+    { title: "清晰可持续的 Alpha 来源", desc: "Strategy" },
+    { title: "执行闭环与风控体系", desc: "Execution / Risk" },
+    { title: "组织治理、流程与合规", desc: "Governance / Ops" },
+    { title: "可扩展的生产力与规模化能力", desc: "Scalability" },
+    { title: "标准化 SOP 与一致性交付", desc: "Operational" },
+    { title: "稳定一致的对外沟通与合作机制", desc: "Communication" }
+  ];
+
+  return (
+    <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-12 max-w-7xl mx-auto">
+      <h2 className="slide4-title text-4xl font-bold text-[#F5F7FA] mb-10 opacity-0 text-center leading-tight">
+        四、优秀管理人满足机构配置的条件
+      </h2>
+
+      <div className="flex w-full gap-12">
+        {/* Left: Radar Chart Box */}
+        <div className="w-5/12 flex flex-col justify-center">
+          <div className="slide4-radar opacity-0 bg-[#1A1F2E]/60 p-8 rounded-2xl border border-gray-700/50 backdrop-blur-sm h-full flex flex-col items-center justify-center">
+            <h3 className="text-sm font-semibold text-[#EBCB8B] mb-10 tracking-widest w-full text-left">INSTITUTIONAL CHECKLIST: 机构关注的多维能力谱系</h3>
+            <div className="relative w-64 h-64 flex items-center justify-center">
+              {/* Radar Chart Mock (SVG Heptagon) */}
+              <svg className="w-full h-full" viewBox="0 0 100 100">
+                {/* Background grids */}
+                <polygon points="50,5 90,25 90,75 50,95 10,75 10,25" fill="none" stroke="#374151" strokeWidth="0.5"/>
+                <polygon points="50,20 77,32 77,68 50,80 23,68 23,32" fill="none" stroke="#374151" strokeWidth="0.5"/>
+                <polygon points="50,35 63,40 63,60 50,65 37,60 37,40" fill="none" stroke="#374151" strokeWidth="0.5"/>
+                {/* Axes */}
+                <line x1="50" y1="50" x2="50" y2="5" stroke="#374151" strokeWidth="0.5"/>
+                <line x1="50" y1="50" x2="90" y2="25" stroke="#374151" strokeWidth="0.5"/>
+                <line x1="50" y1="50" x2="90" y2="75" stroke="#374151" strokeWidth="0.5"/>
+                <line x1="50" y1="50" x2="50" y2="95" stroke="#374151" strokeWidth="0.5"/>
+                <line x1="50" y1="50" x2="10" y2="75" stroke="#374151" strokeWidth="0.5"/>
+                <line x1="50" y1="50" x2="10" y2="25" stroke="#374151" strokeWidth="0.5"/>
+                {/* Data Polygon */}
+                <polygon points="50,15 85,28 70,70 50,85 20,70 15,35" fill="#EBCB8B" fillOpacity="0.2" stroke="#EBCB8B" strokeWidth="2"/>
+                {/* Data Points */}
+                <circle cx="50" cy="15" r="2" fill="#EBCB8B"/>
+                <circle cx="85" cy="28" r="2" fill="#EBCB8B"/>
+                <circle cx="70" cy="70" r="2" fill="#EBCB8B"/>
+                <circle cx="50" cy="85" r="2" fill="#EBCB8B"/>
+                <circle cx="20" cy="70" r="2" fill="#EBCB8B"/>
+                <circle cx="15" cy="35" r="2" fill="#EBCB8B"/>
+              </svg>
+              {/* Labels */}
+              <span className="absolute top-[-5%] text-xs text-gray-300">业绩</span>
+              <span className="absolute top-[20%] right-[-5%] text-xs text-gray-300">策略</span>
+              <span className="absolute bottom-[20%] right-[-5%] text-xs text-gray-300">执行</span>
+              <span className="absolute bottom-[-5%] text-xs text-gray-300">风控</span>
+              <span className="absolute bottom-[20%] left-[-5%] text-xs text-gray-300">合规</span>
+              <span className="absolute top-[20%] left-[-5%] text-xs text-gray-300">团队</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Right: 7 Conditions */}
+        <div className="w-7/12 flex flex-col items-center gap-y-3">
+          <div className="grid grid-cols-2 gap-x-6 gap-y-3 w-full">
+            {conditions.slice(0, 6).map((item, idx) => (
+              <div key={idx} className="slide4-item opacity-0 flex items-center space-x-4 bg-[#1A1F2E]/40 p-4 rounded-xl border border-gray-700/30">
+                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#EBCB8B]/20 text-[#EBCB8B] flex items-center justify-center font-bold font-mono text-sm">
+                  {idx + 1}
+                </div>
+                <div>
+                  <h3 className="text-sm font-semibold text-[#F5F7FA]">{item.title}</h3>
+                  <p className="text-[10px] text-gray-400 font-mono mt-1">{item.desc}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <div className="w-full flex justify-center mt-1">
+            <div className="slide4-item opacity-0 flex items-center space-x-4 bg-[#1A1F2E]/40 p-4 rounded-xl border border-gray-700/30 w-[calc(50%-0.75rem)]">
+              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#EBCB8B]/20 text-[#EBCB8B] flex items-center justify-center font-bold font-mono text-sm">
+                7
+              </div>
+              <div>
+                <h3 className="text-sm font-semibold text-[#F5F7FA]">{conditions[6].title}</h3>
+                <p className="text-[10px] text-gray-400 font-mono mt-1">{conditions[6].desc}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Slide4;

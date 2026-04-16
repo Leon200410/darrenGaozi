@@ -50,7 +50,7 @@ const Slide3: React.FC = () => {
   ];
 
   return (
-    <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-12 max-w-7xl mx-auto">
+    <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-[5%] py-8 md:py-12">
       <h2 className="slide3-title text-4xl font-bold text-[#F5F7FA] mb-10 opacity-0 text-center leading-tight">
         三、核心答案：体系驱动，才是新周期里真正的竞争力
       </h2>

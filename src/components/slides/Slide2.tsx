@@ -41,7 +41,7 @@ const Slide2: React.FC = () => {
   ];
 
   return (
-    <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-12 max-w-7xl mx-auto">
+    <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-[5%] py-8 md:py-12">
       <h2 className="slide2-title text-4xl font-bold text-[#F5F7FA] mb-2 opacity-0 text-center">
         二、特征表现：市场结构发生变化
       </h2>

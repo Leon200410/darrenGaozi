@@ -40,7 +40,7 @@ const Slide8: React.FC = () => {
   ];
 
   return (
-    <div ref={containerRef} className="w-full h-full flex flex-col items-center justify-center relative overflow-hidden px-12 max-w-5xl mx-auto py-12">
+    <div ref={containerRef} className="w-full h-full flex flex-col items-center justify-center relative overflow-hidden px-[5%] py-8 md:py-12">
       
       {/* Main Title Group */}
       <div className="text-center w-full flex flex-col items-center mb-16 z-10">

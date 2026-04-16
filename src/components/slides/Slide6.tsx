@@ -46,7 +46,7 @@ const Slide6: React.FC = () => {
   ];
 
   return (
-    <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-12 max-w-7xl mx-auto relative">
+    <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-[5%] py-8 md:py-12 relative">
       <div className=" slide6-title opacity-0">
         <h2 className="text-4xl text-center font-bold text-[#F5F7FA] leading-tight m-auto">
           六、香港机遇

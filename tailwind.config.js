@@ -9,13 +9,18 @@ export default {
     },
     extend: {
       animation: {
-        'spin-slow': 'spin 15s linear infinite',
-        'reverse-spin': 'spin-reverse 20s linear infinite',
+        'spin-slow': 'spin 8s linear infinite',
+        'reverse-spin': 'reverse-spin 6s linear infinite',
+        'zoomIn': 'zoomIn 0.3s ease-out forwards',
       },
       keyframes: {
-        'spin-reverse': {
-          '0%': { transform: 'rotate(360deg)' },
-          '100%': { transform: 'rotate(0deg)' },
+        'reverse-spin': {
+          from: { transform: 'rotate(360deg)' },
+          to: { transform: 'rotate(0deg)' },
+        },
+        'zoomIn': {
+          '0%': { transform: 'scale(0.9)', opacity: '0' },
+          '100%': { transform: 'scale(1)', opacity: '1' },
         }
       }
     },

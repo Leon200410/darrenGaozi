@@ -44,7 +44,7 @@ const Slide4: React.FC = () => {
   ];
 
   return (
-    <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-12 max-w-7xl mx-auto">
+    <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-[5%] py-8 md:py-12">
       <h2 className="slide4-title text-4xl font-bold text-[#F5F7FA] mb-10 opacity-0 text-center leading-tight">
         四、优秀管理人满足机构配置的条件
       </h2>

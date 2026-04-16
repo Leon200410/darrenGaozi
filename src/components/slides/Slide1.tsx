@@ -47,7 +47,7 @@ const Slide1: React.FC = () => {
   ];
 
   return (
-    <div ref={containerRef} className="w-full h-full flex flex-col items-center justify-center px-12 max-w-7xl mx-auto py-8">
+    <div ref={containerRef} className="w-full h-full flex flex-col items-center justify-center px-[5%] py-8 md:py-12">
       {/* Title */}
       <h2 className="slide1-title text-4xl font-bold text-[#F5F7FA] mb-4 leading-tight opacity-0 text-center">
         一、市场变了：单一驱动的时代已过去
@@ -74,14 +74,14 @@ const Slide1: React.FC = () => {
       </div>
 
       {/* 2 Charts Horizontal */}
-      <div className="flex justify-center gap-6 w-full flex-1 min-h-0">
+      <div className="flex justify-center gap-6 w-full flex-1 min-h-[250px]">
         {/* Chart 1 */}
-        <div className="slide1-chart opacity-0 bg-[#1A1F2E]/60 p-4 rounded-xl border border-gray-700/50 backdrop-blur-sm relative flex flex-col w-1/2 h-full min-h-0">
+        <div className="slide1-chart opacity-0 bg-[#1A1F2E]/60 p-4 rounded-xl border border-gray-700/50 backdrop-blur-sm relative flex flex-col w-1/2 h-full">
           <div className="flex justify-between items-center mb-3">
             <h3 className="text-xs font-bold text-[#8A7CF5] uppercase tracking-wider">资金结构迁移 (投资者构成)</h3>
             <p className="text-[10px] text-gray-400">市场参与者结构深刻演变</p>
           </div>
-          <div className="w-full flex-1 min-h-0 flex items-center justify-center bg-black/30 rounded-lg p-2">
+          <div className="w-full flex-1 min-h-[150px] flex items-center justify-center bg-black/30 rounded-lg p-2">
              <img src="/chart1.svg" alt="Chart 1" className="w-full h-full object-contain" onError={(e) => {
                e.currentTarget.style.display = 'none';
                e.currentTarget.parentElement!.innerHTML = '<span class="text-gray-500 text-xs">/public/chart1.svg</span>';
@@ -90,12 +90,12 @@ const Slide1: React.FC = () => {
         </div>
 
         {/* Chart 2 */}
-        <div className="slide1-chart opacity-0 bg-[#1A1F2E]/60 p-4 rounded-xl border border-gray-700/50 backdrop-blur-sm relative flex flex-col w-1/2 h-full min-h-0">
+        <div className="slide1-chart opacity-0 bg-[#1A1F2E]/60 p-4 rounded-xl border border-gray-700/50 backdrop-blur-sm relative flex flex-col w-1/2 h-full">
           <div className="flex justify-between items-center mb-3">
             <h3 className="text-xs font-bold text-[#8A7CF5] uppercase tracking-wider">分布形态变化 (收益因子)</h3>
             <p className="text-[10px] text-gray-400">收益分布尾部加厚</p>
           </div>
-          <div className="w-full flex-1 min-h-0 flex items-center justify-center bg-black/30 rounded-lg p-2">
+          <div className="w-full flex-1 min-h-[150px] flex items-center justify-center bg-black/30 rounded-lg p-2">
              <img src="/chart2.svg" alt="Chart 2" className="w-full h-full object-contain" onError={(e) => {
                e.currentTarget.style.display = 'none';
                e.currentTarget.parentElement!.innerHTML = '<span class="text-gray-500 text-xs">/public/chart2.svg</span>';

@@ -57,7 +57,7 @@ const Slide5: React.FC = () => {
   ];
 
   return (
-    <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-12 max-w-7xl mx-auto relative">
+    <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-[5%] py-8 md:py-12 relative">
       <h2 className="slide5-title text-center text-4xl font-bold text-[#F5F7FA] mb-10 opacity-0 leading-tight">
         五、AI 的作用不是替代人或替你决策<br/>
         <span className="text-[#8A7CF5] mt-2 block">而是把 AI 内嵌到企业生产力经营</span>

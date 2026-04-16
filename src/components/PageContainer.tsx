@@ -3,9 +3,10 @@ import { useAppStore } from '../store/useAppStore';
 
 interface PageContainerProps {
   children: React.ReactNode;
+  className?: string;
 }
 
-export const PageContainer: React.FC<PageContainerProps> = ({ children }) => {
+export const PageContainer: React.FC<PageContainerProps> = ({ children, className = "" }) => {
   const { nextPage, prevPage } = useAppStore();
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
@@ -42,7 +43,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({ children }) => {
   }, [handleKeyDown, handleClick, handleContextMenu]);
 
   return (
-    <div className="presentation-container z-10 flex items-center justify-center p-8 bg-transparent">
+    <div className={`presentation-container z-10 flex items-center justify-center p-8 bg-[#0B0F1A] ${className}`}>
       {children}
     </div>
   );

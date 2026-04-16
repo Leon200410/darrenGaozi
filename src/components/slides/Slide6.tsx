@@ -1,13 +1,45 @@
 import React, { useEffect, useRef } from 'react';
 import anime from 'animejs';
+import { useLocation } from 'react-router-dom';
 import { ArrowRight, Building2, Landmark, ShieldCheck, TrendingUp } from 'lucide-react';
 import { presentationContent } from '../../content/presentation';
 
 const Slide6: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+  const isNormal = location.pathname === '/normal';
   const content = presentationContent.slide6;
   const trendIcons = [TrendingUp, Building2, ShieldCheck, Landmark];
   const trendAccents = ['#F6D38B', '#7FE7D8', '#8AA5FF', '#F2A65A'];
+
+  const S = {
+    title: isNormal ? "text-4xl mb-10" : "text-3xl mb-6",
+    gap: isNormal ? "gap-10" : "gap-8",
+    panelP: isNormal ? "p-7" : "p-5",
+    badge: isNormal ? "px-3 py-1 text-[10px]" : "px-2 py-0.5 text-[9px]",
+    statement: isNormal ? "text-[22px] leading-[1.55] p-5" : "text-[17px] leading-[1.4] p-3.5",
+    stepP: isNormal ? "px-4 py-4" : "px-2 py-2.5",
+    stepTitle: isNormal ? "text-xl mt-2" : "text-base mt-1",
+    stepIcon: isNormal ? "w-4 h-4" : "w-3 h-3",
+    chip: isNormal ? "px-3 py-3 text-[12px] leading-5" : "px-2 py-2 text-[11px] leading-snug",
+    scarcityP: isNormal ? "p-5 mt-5" : "p-3.5 mt-3",
+    scarcityBadge: isNormal ? "text-[10px] mb-2" : "text-[9px] mb-1.5",
+    scarcityTitle: isNormal ? "text-lg mb-2" : "text-base mb-1.5",
+    scarcityDesc: isNormal ? "text-[13px] leading-6" : "text-xs leading-5",
+    scarcityFooter: isNormal ? "text-[12px] mt-3" : "text-[11px] mt-2",
+    skylineWrap: isNormal ? "pt-5 mt-auto" : "pt-3 mt-auto",
+    skylineH: isNormal ? "h-12 mt-4" : "h-6 mt-3",
+    trendBadge: isNormal ? "text-xs" : "text-[10px]",
+    trendTitle: isNormal ? "text-[24px] mt-2" : "text-[20px] mt-1.5",
+    trendNoteWrap: isNormal ? "mb-4" : "mb-3",
+    trendNoteText: isNormal ? "text-[11px]" : "text-[9px]",
+    trendGap: isNormal ? "gap-4" : "gap-2.5",
+    itemP: isNormal ? "p-5 gap-4" : "p-3.5 gap-3",
+    iconWrap: isNormal ? "w-10 h-10" : "w-8 h-8",
+    icon: isNormal ? "w-4 h-4" : "w-3.5 h-3.5",
+    itemTitle: isNormal ? "text-[21px]" : "text-[17px]",
+    itemDesc: isNormal ? "text-[13px] leading-6 mt-1.5" : "text-xs leading-5 mt-1"
+  };
 
   useEffect(() => {
     if (containerRef.current) {
@@ -66,76 +98,76 @@ const Slide6: React.FC = () => {
         <div className="absolute bottom-16 right-1/4 w-80 h-80 bg-[#7FE7D8]/6 blur-[120px] rounded-full"></div>
       </div>
 
-      <h2 className="slide6-title text-4xl font-bold text-[#F5F7FA] mb-10 opacity-0 text-center leading-tight relative z-10">
+      <h2 className={`slide6-title font-bold text-[#F5F7FA] opacity-0 text-center leading-tight relative z-10 ${S.title}`}>
         {content.title}
       </h2>
 
-      <div className="relative z-10 flex w-full gap-10">
+      <div className={`relative z-10 flex w-full ${S.gap}`}>
         <div className="w-5/12 flex flex-col">
-          <div className="slide6-panel opacity-0 bg-[#1A1F2E]/60 p-7 rounded-2xl border border-gray-700/50 backdrop-blur-sm h-full flex flex-col">
-            <div className="flex items-center justify-between mb-5">
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#F6D38B]/20 bg-[#F6D38B]/8 text-[10px] font-semibold uppercase tracking-[0.24em] text-[#F6D38B]">
+          <div className={`slide6-panel opacity-0 bg-[#1A1F2E]/60 rounded-2xl border border-gray-700/50 backdrop-blur-sm h-full flex flex-col ${S.panelP}`}>
+            <div className="flex items-center justify-between mb-3">
+              <span className={`inline-flex items-center gap-2 rounded-full border border-[#F6D38B]/20 bg-[#F6D38B]/8 font-semibold uppercase tracking-[0.24em] text-[#F6D38B] ${S.badge}`}>
                 <span className="w-1.5 h-1.5 rounded-full bg-[#F6D38B]"></span>
                 {content.badge}
               </span>
-              <span className="text-[10px] font-mono text-gray-500 uppercase tracking-[0.22em]">{content.thesisLabel}</span>
+              <span className={`font-mono text-gray-500 uppercase tracking-[0.22em] ${isNormal ? 'text-[10px]' : 'text-[9px]'}`}>{content.thesisLabel}</span>
             </div>
 
-            <div className="slide6-copy opacity-0 rounded-2xl border border-white/8 bg-white/[0.03] p-5">
-              <p className="text-[22px] leading-[1.55] text-[#E8EDF6]">
+            <div className={`slide6-copy opacity-0 rounded-xl border border-white/8 bg-white/[0.03] ${S.statement}`}>
+              <p className="text-[#E8EDF6]">
                 {content.statement.prefix}
                 <span className="mx-2 font-semibold text-[#F6D38B]">{content.statement.highlight}</span>
                 {content.statement.suffix}
               </p>
             </div>
 
-            <div className="mt-5 flex items-center gap-3">
+            <div className={`flex items-center gap-2 ${isNormal ? 'mt-5' : 'mt-3'}`}>
               {content.steps.map((step, idx) => (
                 <React.Fragment key={step}>
-                  <div className="slide6-step opacity-0 flex-1 rounded-2xl border border-[#8AA5FF]/20 bg-[#10182A]/80 px-4 py-4 text-center">
-                    <div className="text-[10px] font-mono uppercase tracking-[0.22em] text-gray-500">0{idx + 1}</div>
-                    <div className="mt-2 text-xl font-bold text-[#F5F7FA]">{step}</div>
+                  <div className={`slide6-step opacity-0 flex-1 rounded-xl border border-[#8AA5FF]/20 bg-[#10182A]/80 text-center ${S.stepP}`}>
+                    <div className={`font-mono uppercase tracking-[0.22em] text-gray-500 ${isNormal ? 'text-[10px]' : 'text-[9px]'}`}>0{idx + 1}</div>
+                    <div className={`font-bold text-[#F5F7FA] ${S.stepTitle}`}>{step}</div>
                   </div>
                   {idx < content.steps.length - 1 && (
-                    <ArrowRight className="slide6-step opacity-0 w-4 h-4 text-[#8AA5FF] flex-shrink-0" />
+                    <ArrowRight className={`slide6-step opacity-0 text-[#8AA5FF] flex-shrink-0 ${S.stepIcon}`} />
                   )}
                 </React.Fragment>
               ))}
             </div>
 
-            <div className="mt-5 grid grid-cols-3 gap-3">
+            <div className={`grid grid-cols-3 gap-2 ${isNormal ? 'mt-5' : 'mt-3'}`}>
               {content.scarcity.tags.map((tag) => (
                 <div
                   key={tag}
-                  className="slide6-chip opacity-0 rounded-xl border border-gray-700/40 bg-[#0F1626]/70 px-3 py-3 text-center text-[12px] leading-5 text-[#DCE5F3]"
+                  className={`slide6-chip opacity-0 rounded-lg border border-gray-700/40 bg-[#0F1626]/70 text-center text-[#DCE5F3] ${S.chip}`}
                 >
                   {tag}
                 </div>
               ))}
             </div>
 
-            <div className="slide6-copy opacity-0 mt-5 rounded-2xl border border-[#F6D38B]/18 bg-[linear-gradient(135deg,rgba(246,211,139,0.08),rgba(246,211,139,0.02))] p-5">
-              <div className="text-[10px] font-semibold uppercase tracking-[0.24em] text-[#F6D38B] mb-2">
+            <div className={`slide6-copy opacity-0 rounded-xl border border-[#F6D38B]/18 bg-[linear-gradient(135deg,rgba(246,211,139,0.08),rgba(246,211,139,0.02))] ${S.scarcityP}`}>
+              <div className={`font-semibold uppercase tracking-[0.24em] text-[#F6D38B] ${S.scarcityBadge}`}>
                 {content.scarcity.badge}
               </div>
-              <h3 className="text-lg font-bold text-[#FDF1D4] leading-snug mb-2">
+              <h3 className={`font-bold text-[#FDF1D4] leading-snug ${S.scarcityTitle}`}>
                 {content.scarcity.title}
               </h3>
-              <p className="text-[13px] leading-6 text-[#C9D3E2]">
+              <p className={`text-[#C9D3E2] ${S.scarcityDesc}`}>
                 {content.scarcity.description}
               </p>
-              <p className="mt-3 text-[12px] font-medium text-[#F6D38B]">
+              <p className={`font-medium text-[#F6D38B] ${S.scarcityFooter}`}>
                 {content.scarcity.footer}
               </p>
             </div>
 
-            <div className="mt-auto pt-5">
+            <div className={S.skylineWrap}>
               <div className="h-px w-full bg-gradient-to-r from-transparent via-white/12 to-transparent" />
-              <div className="mt-4 flex items-end gap-1.5 h-12">
+              <div className={`flex items-end gap-1 ${S.skylineH}`}>
                 {content.skyline.map((height, idx) => (
                   <div
                     key={`${height}-${idx}`}
-                    className="flex-1 rounded-t-md bg-gradient-to-t from-[#283247] to-[#4B556B]/60"
+                    className="flex-1 rounded-t-sm bg-gradient-to-t from-[#283247] to-[#4B556B]/60"
                     style={{ height }}
                   />
                 ))}
@@ -145,39 +177,39 @@ const Slide6: React.FC = () => {
         </div>
 
         <div className="w-7/12 flex flex-col justify-center">
-          <div className="slide6-copy opacity-0 flex items-end justify-between mb-4 px-1">
+          <div className={`slide6-copy opacity-0 flex items-end justify-between px-1 ${S.trendNoteWrap}`}>
             <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.26em] text-[#7FE7D8]">{content.trendBadge}</p>
-              <h3 className="mt-2 text-[24px] font-bold text-[#F5F7FA]">{content.trendTitle}</h3>
+              <p className={`font-semibold uppercase tracking-[0.26em] text-[#7FE7D8] ${S.trendBadge}`}>{content.trendBadge}</p>
+              <h3 className={`font-bold text-[#F5F7FA] ${S.trendTitle}`}>{content.trendTitle}</h3>
             </div>
-            <p className="text-[11px] text-gray-500 uppercase tracking-[0.18em]">{content.trendNote}</p>
+            <p className={`text-gray-500 uppercase tracking-[0.18em] ${S.trendNoteText}`}>{content.trendNote}</p>
           </div>
 
-          <div className="flex flex-col gap-4">
+          <div className={`flex flex-col ${S.trendGap}`}>
             {content.trends.map((trend, idx) => {
               const Icon = trendIcons[idx];
 
               return (
                 <div
                   key={trend.title}
-                  className="slide6-item opacity-0 flex items-start gap-4 bg-[#1A1F2E]/40 p-5 rounded-2xl border border-gray-700/30 shadow-lg"
+                  className={`slide6-item opacity-0 flex items-start bg-[#1A1F2E]/40 rounded-xl border border-gray-700/30 shadow-md ${S.itemP}`}
                 >
                   <div
-                    className="flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center border"
+                    className={`flex-shrink-0 rounded-full flex items-center justify-center border ${S.iconWrap}`}
                     style={{
                       color: trendAccents[idx],
                       borderColor: `${trendAccents[idx]}55`,
                       backgroundColor: `${trendAccents[idx]}14`,
                     }}
                   >
-                    <Icon className="w-4 h-4" />
+                    <Icon className={S.icon} />
                   </div>
-                  <div className="flex-shrink-0 w-10 pt-1 text-[11px] font-mono uppercase tracking-[0.22em] text-gray-500">
+                  <div className={`flex-shrink-0 w-8 pt-1 font-mono uppercase tracking-[0.22em] text-gray-500 ${isNormal ? 'text-[11px]' : 'text-[10px]'}`}>
                     0{idx + 1}
                   </div>
                   <div className="min-w-0">
-                    <h4 className="text-[21px] font-bold text-[#F5F7FA] leading-tight">{trend.title}</h4>
-                    <p className="mt-1.5 text-[13px] leading-6 text-gray-400">{trend.desc}</p>
+                    <h4 className={`font-bold text-[#F5F7FA] leading-tight ${S.itemTitle}`}>{trend.title}</h4>
+                    <p className={`text-gray-400 ${S.itemDesc}`}>{trend.desc}</p>
                   </div>
                 </div>
               );

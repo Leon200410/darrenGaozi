@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import anime from 'animejs';
+import { useLocation } from 'react-router-dom';
 import { presentationContent } from '../../content/presentation';
 
 const Slide7: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [activeImg, setActiveImg] = useState<string | null>(null);
   const content = presentationContent.slide7;
+  const location = useLocation();
+  const isNormal = location.pathname === '/normal';
 
   useEffect(() => {
     if (containerRef.current) {
@@ -59,44 +62,66 @@ const Slide7: React.FC = () => {
 
       <div className="w-full relative flex-1 min-h-0 max-w-[1800px] mx-auto mt-4">
         <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">
-          {content.dashboards.map((board, idx) => (
-            <line
-              key={`line-${idx}`}
-              x1="50%"
-              y1="50%"
-              x2={board.lineEnd.x}
-              y2={board.lineEnd.y}
-              stroke={board.color}
-              strokeWidth="1.5"
-              strokeDasharray="6 6"
-              className="slide7-line opacity-0"
-            />
-          ))}
+          {content.dashboards.map((board, idx) => {
+            let lineEnd: { x: string; y: string } = { ...board.lineEnd };
+            if (isNormal) {
+              if (idx === 0) lineEnd = { x: '16%', y: '16%' };
+              if (idx === 1) lineEnd = { x: '26%', y: '50%' };
+              if (idx === 2) lineEnd = { x: '16%', y: '84%' };
+              if (idx === 3) lineEnd = { x: '84%', y: '16%' };
+              if (idx === 4) lineEnd = { x: '74%', y: '50%' };
+              if (idx === 5) lineEnd = { x: '84%', y: '84%' };
+            }
+            return (
+              <line
+                key={`line-${idx}`}
+                x1="50%"
+                y1="50%"
+                x2={lineEnd.x}
+                y2={lineEnd.y}
+                stroke={board.color}
+                strokeWidth="1.5"
+                strokeDasharray="6 6"
+                className="slide7-line opacity-0"
+              />
+            );
+          })}
         </svg>
 
-        {content.dashboards.map((item, idx) => (
-          <div
-            key={`card-${idx}`}
-            onClick={() => setActiveImg(item.img)}
-            className="slide7-dashboard opacity-0 absolute flex flex-col bg-[#1A1F2E]/70 border border-gray-700/50 backdrop-blur-md rounded-xl p-3 shadow-2xl transition-all duration-300 hover:scale-[1.1] hover:z-50 hover:border-[#8A7CF5]/60 hover:shadow-[0_0_30px_rgba(138,124,245,0.4)] cursor-pointer group"
-            style={{
-              top: item.pos.top,
-              left: 'left' in item.pos ? item.pos.left : undefined,
-              right: 'right' in item.pos ? item.pos.right : undefined,
-              width: '24%',
-              height: '30%',
-            }}
-          >
-            <div className="flex items-center gap-2 mb-2 flex-shrink-0">
-              <div className="w-1.5 h-1.5 rounded-full transition-transform group-hover:scale-150" style={{ backgroundColor: item.color, boxShadow: `0 0 8px ${item.color}` }}></div>
-              <span className="text-[10px] lg:text-xs text-gray-200 font-semibold tracking-wide truncate">{item.title}</span>
+        {content.dashboards.map((item, idx) => {
+          let pos: { top: string; left?: string; right?: string } = { ...item.pos };
+          if (isNormal) {
+            if (idx === 0) pos = { top: '2%', left: '5%' } as any;
+            if (idx === 1) pos = { top: '35%', left: '15%' } as any;
+            if (idx === 2) pos = { top: '68%', left: '5%' } as any;
+            if (idx === 3) pos = { top: '2%', right: '5%' } as any;
+            if (idx === 4) pos = { top: '35%', right: '15%' } as any;
+            if (idx === 5) pos = { top: '68%', right: '5%' } as any;
+          }
+          return (
+            <div
+              key={`card-${idx}`}
+              onClick={() => setActiveImg(item.img)}
+              className="slide7-dashboard opacity-0 absolute flex flex-col bg-[#1A1F2E]/70 border border-gray-700/50 backdrop-blur-md rounded-xl p-3 shadow-2xl transition-all duration-300 hover:scale-[1.1] hover:z-50 hover:border-[#8A7CF5]/60 hover:shadow-[0_0_30px_rgba(138,124,245,0.4)] cursor-pointer group"
+              style={{
+                top: pos.top,
+                left: 'left' in pos ? pos.left : undefined,
+                right: 'right' in pos ? pos.right : undefined,
+                width: isNormal ? '26%' : '24%',
+                height: isNormal ? '28%' : '30%',
+              }}
+            >
+              <div className="flex items-center gap-2 mb-2 flex-shrink-0">
+                <div className="w-1.5 h-1.5 rounded-full transition-transform group-hover:scale-150" style={{ backgroundColor: item.color, boxShadow: `0 0 8px ${item.color}` }}></div>
+                <span className="text-[10px] lg:text-xs text-gray-200 font-semibold tracking-wide truncate">{item.title}</span>
+              </div>
+              <div className="w-full flex-1 min-h-0 relative rounded-lg overflow-hidden bg-black/60 border border-gray-800/60 group-hover:border-[#8A7CF5]/50 transition-colors">
+                <img src={item.img} alt={item.title} className="absolute inset-0 w-full h-full object-contain" />
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-[#8A7CF5]/10 transition-colors pointer-events-none"></div>
+              </div>
             </div>
-            <div className="w-full flex-1 min-h-0 relative rounded-lg overflow-hidden bg-black/60 border border-gray-800/60 group-hover:border-[#8A7CF5]/50 transition-colors">
-              <img src={item.img} alt={item.title} className="absolute inset-0 w-full h-full object-contain" />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-[#8A7CF5]/10 transition-colors pointer-events-none"></div>
-            </div>
-          </div>
-        ))}
+          );
+        })}
 
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] flex items-center justify-center flex-shrink-0 z-20">
           <svg className="absolute inset-0 w-full h-full" viewBox="0 0 200 200">

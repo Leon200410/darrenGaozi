@@ -62,7 +62,7 @@ const Slide0: React.FC = () => {
     <div ref={containerRef} className="w-full h-full flex flex-col items-center justify-center relative overflow-hidden">
       {/* Logo */}
       <div className="absolute top-12 left-12 z-20">
-        <img src="/logo-white.png" alt="Logo" className="slide0-logo opacity-0 h-10 md:h-12 object-contain" />
+        <img src="/logo.png" alt="Logo" className="slide0-logo opacity-0 h-10 md:h-12 object-contain invert brightness-0" />
       </div>
 
       {/* Decorative Background Elements */}

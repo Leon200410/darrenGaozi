@@ -50,25 +50,27 @@ const Slide4: React.FC = () => {
               {/* Radar Chart Mock (SVG Heptagon) */}
               <svg className="w-full h-full" viewBox="0 0 100 100">
                 {/* Background grids */}
-                <polygon points="50,5 90,25 90,75 50,95 10,75 10,25" fill="none" stroke="#374151" strokeWidth="0.5"/>
-                <polygon points="50,20 77,32 77,68 50,80 23,68 23,32" fill="none" stroke="#374151" strokeWidth="0.5"/>
-                <polygon points="50,35 63,40 63,60 50,65 37,60 37,40" fill="none" stroke="#374151" strokeWidth="0.5"/>
+                <polygon points="50,5 85.2,21.9 93.9,60 69.5,90.6 30.5,90.6 6.1,60 14.8,21.9" fill="none" stroke="#374151" strokeWidth="0.5"/>
+                <polygon points="50,20 73.5,31.3 79.2,56.7 63,77 37,77 20.8,56.7 26.5,31.3" fill="none" stroke="#374151" strokeWidth="0.5"/>
+                <polygon points="50,35 61.7,40.6 64.6,53.3 56.5,63.5 43.5,63.5 35.4,53.3 38.3,40.6" fill="none" stroke="#374151" strokeWidth="0.5"/>
                 {/* Axes */}
                 <line x1="50" y1="50" x2="50" y2="5" stroke="#374151" strokeWidth="0.5"/>
-                <line x1="50" y1="50" x2="90" y2="25" stroke="#374151" strokeWidth="0.5"/>
-                <line x1="50" y1="50" x2="90" y2="75" stroke="#374151" strokeWidth="0.5"/>
-                <line x1="50" y1="50" x2="50" y2="95" stroke="#374151" strokeWidth="0.5"/>
-                <line x1="50" y1="50" x2="10" y2="75" stroke="#374151" strokeWidth="0.5"/>
-                <line x1="50" y1="50" x2="10" y2="25" stroke="#374151" strokeWidth="0.5"/>
+                <line x1="50" y1="50" x2="85.2" y2="21.9" stroke="#374151" strokeWidth="0.5"/>
+                <line x1="50" y1="50" x2="93.9" y2="60" stroke="#374151" strokeWidth="0.5"/>
+                <line x1="50" y1="50" x2="69.5" y2="90.6" stroke="#374151" strokeWidth="0.5"/>
+                <line x1="50" y1="50" x2="30.5" y2="90.6" stroke="#374151" strokeWidth="0.5"/>
+                <line x1="50" y1="50" x2="6.1" y2="60" stroke="#374151" strokeWidth="0.5"/>
+                <line x1="50" y1="50" x2="14.8" y2="21.9" stroke="#374151" strokeWidth="0.5"/>
                 {/* Data Polygon */}
-                <polygon points="50,15 85,28 70,70 50,85 20,70 15,35" fill="#EBCB8B" fillOpacity="0.2" stroke="#EBCB8B" strokeWidth="2"/>
+                <polygon points="50,10 82.8,23.8 84.1,57.8 67.4,86 33.5,84.2 11,58.9 26.5,31.3" fill="#EBCB8B" fillOpacity="0.2" stroke="#EBCB8B" strokeWidth="2"/>
                 {/* Data Points */}
-                <circle cx="50" cy="15" r="2" fill="#EBCB8B"/>
-                <circle cx="85" cy="28" r="2" fill="#EBCB8B"/>
-                <circle cx="70" cy="70" r="2" fill="#EBCB8B"/>
-                <circle cx="50" cy="85" r="2" fill="#EBCB8B"/>
-                <circle cx="20" cy="70" r="2" fill="#EBCB8B"/>
-                <circle cx="15" cy="35" r="2" fill="#EBCB8B"/>
+                <circle cx="50" cy="10" r="2" fill="#EBCB8B"/>
+                <circle cx="82.8" cy="23.8" r="2" fill="#EBCB8B"/>
+                <circle cx="84.1" cy="57.8" r="2" fill="#EBCB8B"/>
+                <circle cx="67.4" cy="86" r="2" fill="#EBCB8B"/>
+                <circle cx="33.5" cy="84.2" r="2" fill="#EBCB8B"/>
+                <circle cx="11" cy="58.9" r="2" fill="#EBCB8B"/>
+                <circle cx="26.5" cy="31.3" r="2" fill="#EBCB8B"/>
               </svg>
               {/* Labels */}
               {content.radarLabels.map((label, idx) => (

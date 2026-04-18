@@ -51,8 +51,6 @@ const Slide1: React.FC = () => {
       <div className="slide1-subtitle opacity-0 text-center mb-6">
         <p className="text-lg text-[#F5F7FA] font-medium leading-relaxed bg-[#1A1F2E]/60 inline-block px-6 py-3 rounded-full border border-gray-700/50 backdrop-blur-sm shadow-lg">
           {content.quote.prefix}
-          <span className="text-[#EBCB8B] font-bold text-xl mx-2">{content.quote.highlight}</span>
-          {content.quote.suffix}
         </p>
       </div>
 
@@ -73,7 +71,6 @@ const Slide1: React.FC = () => {
           <div key={idx} className="slide1-chart opacity-0 bg-[#1A1F2E]/60 p-4 rounded-xl border border-gray-700/50 backdrop-blur-sm relative flex flex-col w-1/2 h-full">
             <div className="flex justify-between items-center mb-3">
               <h3 className="text-xs font-bold text-[#8A7CF5] uppercase tracking-wider">{chart.title}</h3>
-              <p className="text-[10px] text-gray-400">{chart.desc}</p>
             </div>
             <div className="w-full flex-1 min-h-[150px] flex items-center justify-center bg-black/30 rounded-lg p-2">
               <img src={chart.src} alt={chart.alt} className="w-full h-full object-contain" onError={(e) => {

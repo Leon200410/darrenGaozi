@@ -20,6 +20,12 @@ const Slide3: React.FC = () => {
         delay: 200,
       })
       .add({
+        targets: '.slide3-subtitle',
+        translateY: [20, 0],
+        opacity: [0, 1],
+        duration: 800,
+      }, '-=400')
+      .add({
         targets: '.slide3-sys-box',
         translateX: [-50, 0],
         opacity: [0, 1],
@@ -37,9 +43,16 @@ const Slide3: React.FC = () => {
 
   return (
     <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-[5%] py-8 md:py-12">
-      <h2 className="slide3-title text-4xl font-bold text-[#F5F7FA] mb-10 opacity-0 text-center leading-tight">
+      <h2 className="slide3-title text-4xl font-bold text-[#F5F7FA] mb-4 opacity-0 text-center leading-tight">
         {content.title}
       </h2>
+      {content.quote.prefix && (
+        <div className="slide3-subtitle opacity-0 text-center mb-6">
+          <p className="text-lg text-[#F5F7FA] font-medium leading-relaxed bg-[#1A1F2E]/60 inline-block px-6 py-3 rounded-full border border-gray-700/50 backdrop-blur-sm shadow-lg">
+            {content.quote.prefix}
+          </p>
+        </div>
+      )}
 
       <div className="flex w-full gap-12">
         <div className="w-1/2 flex flex-col justify-center">

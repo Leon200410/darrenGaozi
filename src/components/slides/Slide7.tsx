@@ -24,6 +24,12 @@ const Slide7: React.FC = () => {
         delay: 200,
       })
       .add({
+        targets: '.slide7-subtitle',
+        translateY: [20, 0],
+        opacity: [0, 1],
+        duration: 800,
+      }, '-=500')
+      .add({
         targets: '.slide7-center',
         scale: [0, 1],
         opacity: [0, 1],
@@ -56,9 +62,16 @@ const Slide7: React.FC = () => {
     <div ref={containerRef} className="w-full h-full flex flex-col items-center justify-center px-[5%] py-8 md:py-12 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
       
-      <h2 className="slide7-title text-4xl font-bold text-center text-white mb-8 opacity-0 relative z-30">
+      <h2 className="slide7-title text-4xl font-bold text-[#F5F7FA] mb-4 leading-tight opacity-0 text-center relative z-30">
         {content.title}
       </h2>
+      {content.quote.prefix && (
+        <div className="slide7-subtitle opacity-0 text-center mb-6 relative z-30">
+          <p className="text-lg text-[#F5F7FA] font-medium leading-relaxed bg-[#1A1F2E]/60 inline-block px-6 py-3 rounded-full border border-gray-700/50 backdrop-blur-sm shadow-lg">
+            {content.quote.prefix}
+          </p>
+        </div>
+      )}
 
       <div className="w-full relative flex-1 min-h-0 max-w-[1800px] mx-auto mt-4">
         <svg className="absolute inset-0 w-full h-full pointer-events-none z-0">

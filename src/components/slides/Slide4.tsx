@@ -20,6 +20,12 @@ const Slide4: React.FC = () => {
         delay: 200,
       })
       .add({
+        targets: '.slide4-subtitle',
+        translateY: [20, 0],
+        opacity: [0, 1],
+        duration: 800,
+      }, '-=400')
+      .add({
         targets: '.slide4-radar',
         scale: [0.8, 1],
         opacity: [0, 1],
@@ -37,9 +43,16 @@ const Slide4: React.FC = () => {
 
   return (
     <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-[5%] py-8 md:py-12">
-      <h2 className="slide4-title text-4xl font-bold text-[#F5F7FA] mb-10 opacity-0 text-center leading-tight">
+      <h2 className="slide4-title text-4xl font-bold text-[#F5F7FA] mb-4 opacity-0 text-center leading-tight">
         {content.title}
       </h2>
+      {content.quote.prefix && (
+        <div className="slide4-subtitle opacity-0 text-center mb-6">
+          <p className="text-lg text-[#F5F7FA] font-medium leading-relaxed bg-[#1A1F2E]/60 inline-block px-6 py-3 rounded-full border border-gray-700/50 backdrop-blur-sm shadow-lg">
+            {content.quote.prefix}
+          </p>
+        </div>
+      )}
 
       <div className="flex w-full gap-12">
         {/* Left: Radar Chart Box */}
@@ -97,8 +110,8 @@ const Slide4: React.FC = () => {
               </div>
             ))}
           </div>
-          <div className="w-full flex justify-center mt-1">
-            <div className="slide4-item opacity-0 flex items-center space-x-4 bg-[#1A1F2E]/40 p-4 rounded-xl border border-gray-700/30 w-[calc(50%-0.75rem)]">
+          <div className="w-full mt-1">
+            <div className="slide4-item opacity-0 flex items-center space-x-4 bg-[#1A1F2E]/40 p-4 rounded-xl border border-gray-700/30 w-full">
               <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#EBCB8B]/20 text-[#EBCB8B] flex items-center justify-center font-bold font-mono text-sm">
                 7
               </div>

@@ -14,14 +14,15 @@ export const SLIDE_COUNT = slideOrder.length;
 
 export const presentationContent = {
   slide0: {
-    badge: 'Strategy To System · Stage Narrative',
+    badge: 'SYSTEM TRANSITION · ALPHA EVOLUTION',
     title: {
-      prefix: '從策略驅動到',
-      highlight: '體系驅動',
+      main: '從單一驅動邁向體系化驅動',
+      sub: 'From Single-Driver to System-Driven',
     },
     subtitle: {
-      prefix: '量化機構如何保持競爭力與持續生產',
+      main: '量化機構如何維持競爭優勢並持續產出',
       highlight: 'Alpha',
+      sub: 'How Quantitative Firms Sustain Competitive Edge and Generate Alpha',
     },
     footer: {
       left: 'Institutional Quantitative Framework',
@@ -29,11 +30,9 @@ export const presentationContent = {
     },
   },
   slide1: {
-    title: '一、市場變了：單一驅動的時代已成為過去式',
+    title: '單一驅動的時代已成過去',
     quote: {
-      prefix: '「過去拼抓住一個好策略，現在拼',
-      highlight: '把策略做成系統',
-      suffix: '。」',
+      prefix: '「The Single-Driver Paradigm is Obsolete」',
     },
     points: [
       { title: '單一風格驅動紅利衰減', desc: '單一因子半衰期加速' },
@@ -42,15 +41,13 @@ export const presentationContent = {
     ],
     charts: [
       {
-        title: '資金結構遷移 (投資者構成)',
-        desc: '市場參與者結構深刻演變',
+        title: 'ETH Funding Regime Shift (Pre vs Post 2026)',
         src: '/chart1.svg',
         alt: '資金結構遷移圖',
         fallback: '/public/chart1.svg',
       },
       {
-        title: '分佈形態變化 (收益因子)',
-        desc: '收益分佈尾部加厚',
+        title: 'ETH Funding Rate Distribution Shift (Pre vs Post 2026)',
         src: '/chart2.svg',
         alt: '收益因子分佈變化圖',
         fallback: '/public/chart2.svg',
@@ -58,7 +55,10 @@ export const presentationContent = {
     ],
   },
   slide2: {
-    title: '二、特徵表現：市場結構發生變化',
+    title: '市場結構正在發生變化',
+    quote: {
+      prefix: '「Structural Changes in the Market」',
+    },
     subtitle: '從情緒主導到配置主導',
     donuts: [
       {
@@ -91,7 +91,10 @@ export const presentationContent = {
     },
   },
   slide3: {
-    title: '三、核心答案：體系驅動，才是新週期裡真正的競爭力',
+    title: '體系化驅動，構成新週期下的核心競爭優勢',
+    quote: {
+      prefix: '「System-Driven is the True Edge in the New Cycle」',
+    },
     equationTitle: 'SYSTEM EQUATION: 體系驅動 = 系統間協同',
     systems: [
       { num: '01', title: '數據系統', desc: '數據挖掘、清洗、特徵化、可交叉驗證、即時數據流' },
@@ -114,7 +117,10 @@ export const presentationContent = {
     },
   },
   slide4: {
-    title: '四、優秀管理人滿足機構配置的條件',
+    title: '優秀管理人：機構配置的關鍵條件',
+    quote: {
+      prefix: '「Core Attributes of Institutional-Quality Managers」',
+    },
     radarTitle: 'INSTITUTIONAL CHECKLIST: 機構關注的多維能力譜系',
     radarLabels: [
       { text: '業績', positionClass: 'top-[-5%] left-1/2 -translate-x-1/2' },
@@ -137,8 +143,10 @@ export const presentationContent = {
   },
   slide5: {
     title: {
-      line1: '五、AI 的作用不是替代人或替你決策',
-      line2: '而是把 AI 內嵌到企業生產力經營',
+      line1: 'AI 實踐：內嵌於企業生產經營體系',
+    },
+    quote: {
+      prefix: '「AI in Practice: Embedded in Enterprise Operating Systems」',
     },
     funnel: {
       eyebrow: 'FUNNEL',
@@ -171,7 +179,10 @@ export const presentationContent = {
   },
   slide6: {
     badge: 'Hong Kong Opportunity',
-    title: '六，香港機遇',
+    title: '香港機遇與未來',
+    quote: {
+      prefix: '「Hong Kong: Opportunities and the Future」',
+    },
     thesisLabel: 'Platform Thesis',
     statement: {
       prefix: '香港正在形成讓新一代機構能力被',
@@ -227,7 +238,10 @@ export const presentationContent = {
     ],
   },
   slide7: {
-    title: '七、機構級智能高效的數字資產管理系統',
+    title: '機構級智能高效的數字資產管理系統',
+    quote: {
+      prefix: '「Institutional-Grade Intelligent Digital Asset Management Platform」',
+    },
     systems: [
       { name: '策略管理\n系統', angle: 30 },
       { name: '風控系統', angle: 90 },
@@ -289,16 +303,12 @@ export const presentationContent = {
   slide8: {
     title: ['誰先完成體系化，', '誰更可能贏下新週期。'],
     description: {
-      prefix: '從策略驅動到體系驅動，本質上不是從“聰明”走向“笨重”，而是從',
-      primaryHighlight: '“局部成效”',
-      connector: '走向',
-      secondaryHighlight: '“長期可複製”',
-      suffix: '。',
+      text: 'In the new cycle, competition is defined not by single strategies, but by scalable and repeatable alpha production systems.',
     },
     points: [
-      { text: '單一驅動仍然重要，但它更像入\n口，而不是終局。', accent: '#8A7CF5' },
-      { text: '機構競爭力的核心，正在從抓機\n會轉向生產 Alpha。', accent: '#58E3C2' },
-      { text: '香港與 AI，會放大那些已經完成\n系統化升級的團隊。', accent: '#EBCB8B' },
+      { text: '單一驅動仍然重要，但它只是優勢的入口，\n而不再是勝負的終點。', accent: '#8A7CF5' },
+      { text: '機構競爭的核心，正從捕捉機會，\n轉向持續生產 Alpha 的體系能力。', accent: '#58E3C2' },
+      { text: '香港的制度紅利與 AI 的生產力槓桿，\n將放大率先完成體系化升級機構的優勢。', accent: '#EBCB8B' },
     ],
   },
 } as const;

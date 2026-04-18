@@ -32,10 +32,8 @@ function Presentation({ isCenter = false }: { isCenter?: boolean }) {
 
   if (isCenter) {
     return (
-      <div className="relative bg-[#0B0F1A] overflow-hidden flex items-center justify-center w-full h-full max-h-screen rounded-xl shadow-[0_0_50px_rgba(0,0,0,0.5)]">
-        <PageContainer className="w-full h-full">
-          <CurrentSlide />
-        </PageContainer>
+      <div className="relative bg-[#0B0F1A] overflow-hidden flex items-center justify-center w-full h-full max-h-screen">
+        <CurrentSlide />
       </div>
     );
   }
@@ -54,16 +52,21 @@ function App() {
     <Routes>
       <Route path="/" element={<Presentation />} />
       <Route path="/center" element={
-        <div className="w-screen min-h-screen bg-[#050810] flex items-center justify-center p-4 md:p-12">
-          <div className="w-full max-w-[1600px] aspect-[21/9] relative ring-1 ring-white/10 rounded-xl overflow-hidden shadow-2xl">
-            <Presentation isCenter={true} />
+        <div className="relative w-screen h-screen overflow-hidden bg-[#0B0F1A] flex items-center justify-center p-4 md:p-12">
+          <div className="absolute inset-0 bg-[#0B0F1A]"></div>
+          <div className="relative w-full max-w-[1600px] aspect-[21/9] ring-1 ring-white/10 rounded-xl overflow-hidden shadow-2xl">
+            <PageContainer className="w-full h-full p-0">
+              <Presentation isCenter={true} />
+            </PageContainer>
           </div>
         </div>
       } />
       <Route path="/normal" element={
-        <div className="w-screen min-h-screen bg-[#050810] flex items-center justify-center p-4 md:p-12">
-          <div className="w-full max-w-[1600px] aspect-video relative ring-1 ring-white/10 rounded-xl overflow-hidden shadow-2xl">
-            <Presentation isCenter={true} />
+        <div className="w-screen h-screen bg-[#0B0F1A] flex items-center justify-center overflow-hidden">
+          <div className="w-full h-full aspect-video max-w-none relative overflow-hidden">
+            <PageContainer className="w-full h-full p-0">
+              <Presentation isCenter={true} />
+            </PageContainer>
           </div>
         </div>
       } />

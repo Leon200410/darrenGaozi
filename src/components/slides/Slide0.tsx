@@ -44,7 +44,7 @@ const Slide0: React.FC = () => {
       }, '-=800')
       .add({
         targets: '.slide0-line',
-        width: [0, '100px'],
+        width: [0, '800px'],
         opacity: [0, 1],
         duration: 600,
       }, '-=600')
@@ -74,23 +74,30 @@ const Slide0: React.FC = () => {
         <div className="absolute w-[600px] h-[600px] bg-[#8A7CF5]/10 blur-[120px] rounded-full"></div>
       </div>
 
-      <div className="z-10 flex flex-col items-center text-center">
-        <div className="slide0-badge opacity-0 mb-8 px-4 py-1.5 rounded-full border border-[#8A7CF5]/40 bg-[#8A7CF5]/10 text-[#8A7CF5] text-xs font-mono tracking-[0.2em] uppercase">
+      <div className="z-10 flex flex-col items-center text-center mt-8">
+        <div className="slide0-badge opacity-0 mb-10 px-4 py-1.5 rounded-full border border-[#8A7CF5]/40 bg-[#8A7CF5]/10 text-[#8A7CF5] text-xs font-mono tracking-[0.2em] uppercase">
           {content.badge}
         </div>
 
-        <h1 className="slide0-title opacity-0 text-6xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-b from-[#F5F7FA] to-[#A0AAB2] tracking-tight leading-tight mb-6">
-          {content.title.prefix}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#8A7CF5] to-[#58E3C2]">
-            {content.title.highlight}
+        <h1 className="slide0-title opacity-0 flex flex-col items-center gap-4 mb-6">
+          <span className="text-6xl md:text-[80px] font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-[#F5F7FA] via-[#EBCB8B] to-[#F5F7FA] tracking-tight leading-tight">
+            {content.title.main}
+          </span>
+          <span className="text-2xl md:text-3xl font-light text-[#A0AAB2] tracking-[0.1em] uppercase">
+            {content.title.sub}
           </span>
         </h1>
 
-        <div className="slide0-line opacity-0 h-[2px] bg-gradient-to-r from-transparent via-[#EBCB8B] to-transparent mb-6"></div>
+        <div className="slide0-line opacity-0 h-[2px] bg-gradient-to-r from-transparent via-[#58E3C2] to-transparent mb-8 w-full max-w-[800px]"></div>
 
-        <h2 className="slide0-subtitle opacity-0 text-2xl md:text-3xl font-light text-gray-300 tracking-wide max-w-3xl leading-relaxed">
-          {content.subtitle.prefix}{' '}
-          <span className="font-semibold text-[#EBCB8B]">{content.subtitle.highlight}</span>
+        <h2 className="slide0-subtitle opacity-0 flex flex-col items-center gap-3">
+          <span className="text-2xl md:text-[28px] font-medium text-gray-200 tracking-wide max-w-4xl leading-relaxed">
+            {content.subtitle.main}{' '}
+            <span className="font-bold text-[#58E3C2]">{content.subtitle.highlight}</span>
+          </span>
+          <span className="text-[15px] md:text-base font-light text-gray-500 tracking-widest uppercase">
+            {content.subtitle.sub}
+          </span>
         </h2>
       </div>
 

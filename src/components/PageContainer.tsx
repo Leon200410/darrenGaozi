@@ -43,7 +43,7 @@ export const PageContainer: React.FC<PageContainerProps> = ({ children, classNam
   }, [handleKeyDown, handleClick, handleContextMenu]);
 
   return (
-    <div className={`presentation-container z-10 flex items-center justify-center p-8 bg-[#0B0F1A] ${className}`}>
+    <div className={`presentation-container z-10 flex items-center justify-center bg-[#0B0F1A] ${className}`}>
       {children}
     </div>
   );

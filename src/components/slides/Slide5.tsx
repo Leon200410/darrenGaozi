@@ -20,6 +20,12 @@ const Slide5: React.FC = () => {
         delay: 200,
       })
       .add({
+        targets: '.slide5-subtitle',
+        translateY: [20, 0],
+        opacity: [0, 1],
+        duration: 800,
+      }, '-=400')
+      .add({
         targets: '.slide5-funnel',
         scale: [0.8, 1],
         opacity: [0, 1],
@@ -37,10 +43,16 @@ const Slide5: React.FC = () => {
 
   return (
     <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-[5%] py-8 md:py-12 relative">
-      <h2 className="slide5-title text-center text-4xl font-bold text-[#F5F7FA] mb-10 opacity-0 leading-tight">
-        {content.title.line1}<br/>
-        <span className="text-[#8A7CF5] mt-2 block">{content.title.line2}</span>
+      <h2 className="slide5-title text-4xl font-bold text-[#F5F7FA] mb-4 leading-tight opacity-0 text-center">
+        {content.title.line1}
       </h2>
+      {content.quote.prefix && (
+        <div className="slide5-subtitle opacity-0 text-center mb-6">
+          <p className="text-lg text-[#F5F7FA] font-medium leading-relaxed bg-[#1A1F2E]/60 inline-block px-6 py-3 rounded-full border border-gray-700/50 backdrop-blur-sm shadow-lg">
+            {content.quote.prefix}
+          </p>
+        </div>
+      )}
 
       <div className="flex w-full gap-12 mt-4">
         {/* Left: Funnel Chart */}

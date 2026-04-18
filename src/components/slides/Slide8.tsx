@@ -57,12 +57,8 @@ const Slide8: React.FC = () => {
         </h2>
         
         <div className="slide8-desc w-full opacity-0 flex justify-center">
-          <p className="text-base md:text-lg text-[#BFC6D0] leading-relaxed font-normal tracking-wide text-center">
-            {content.description.prefix}
-            <span className="text-white font-semibold mx-2 px-3 py-1 rounded-full bg-[#8A7CF5]/20 shadow-[0_0_10px_rgba(138,124,245,0.15)]">{content.description.primaryHighlight}</span>
-            {content.description.connector}
-            <span className="text-white font-semibold mx-2 px-3 py-1 rounded-full bg-[#58E3C2]/20 shadow-[0_0_10px_rgba(88,227,194,0.15)]">{content.description.secondaryHighlight}</span>
-            {content.description.suffix}
+          <p className="max-w-5xl text-base md:text-lg text-[#BFC6D0] leading-relaxed font-normal tracking-wide text-center">
+            {content.description.text}
           </p>
         </div>
       </div>

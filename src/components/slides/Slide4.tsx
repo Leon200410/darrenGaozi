@@ -46,12 +46,12 @@ const Slide4: React.FC = () => {
 
   return (
     <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-[5%] py-8 md:py-12">
-      <h2 className="slide4-title text-4xl font-bold text-[#F5F7FA] mb-4 opacity-0 text-center leading-tight">
+      <h2 className={`slide4-title font-bold text-[#F5F7FA] mb-4 opacity-0 text-center leading-tight ${isSimple ? 'text-6xl' : 'text-4xl'}`}>
         {content.title}
       </h2>
       {content.quote.prefix && (
         <div className="slide4-subtitle opacity-0 text-center mb-6">
-          <p className="text-lg text-[#F5F7FA] font-medium leading-relaxed bg-[#1A1F2E]/60 inline-block px-6 py-3 rounded-full border border-gray-700/50 backdrop-blur-sm shadow-lg">
+          <p className={`text-[#F5F7FA] font-medium leading-relaxed bg-[#1A1F2E]/60 inline-block rounded-full border border-gray-700/50 backdrop-blur-sm shadow-lg ${isSimple ? 'text-2xl px-8 py-4' : 'text-lg px-6 py-3'}`}>
             {content.quote.prefix}
           </p>
         </div>
@@ -61,8 +61,8 @@ const Slide4: React.FC = () => {
         {/* Left: Radar Chart Box */}
         <div className="w-5/12 flex flex-col">
           <div className="slide4-radar opacity-0 bg-[#1A1F2E]/60 p-8 rounded-2xl border border-gray-700/50 backdrop-blur-sm flex-1 flex flex-col items-center justify-center">
-            <h3 className="text-sm font-semibold text-[#EBCB8B] mb-10 tracking-widest w-full text-left">{content.radarTitle}</h3>
-            <div className="relative w-64 h-64 flex items-center justify-center">
+            <h3 className={`font-semibold text-[#EBCB8B] tracking-widest w-full text-left ${isSimple ? 'text-xl mb-12' : 'text-sm mb-10'}`}>{content.radarTitle}</h3>
+            <div className={`relative flex items-center justify-center ${isSimple ? 'w-80 h-80' : 'w-64 h-64'}`}>
               {/* Radar Chart Mock (SVG Heptagon) */}
               <svg className="w-full h-full" viewBox="0 0 100 100">
                 {/* Background grids */}
@@ -90,7 +90,7 @@ const Slide4: React.FC = () => {
               </svg>
               {/* Labels */}
               {content.radarLabels.map((label, idx) => (
-                <span key={idx} className={`absolute text-xs text-gray-300 ${label.positionClass}`}>
+                <span key={idx} className={`absolute text-gray-300 ${label.positionClass} ${isSimple ? 'text-lg font-medium' : 'text-xs'}`}>
                   {label.text}
                 </span>
               ))}
@@ -102,22 +102,22 @@ const Slide4: React.FC = () => {
         <div className="w-7/12 flex flex-col">
           <div className="grid grid-cols-2 grid-rows-4 gap-x-6 gap-y-4 w-full h-full flex-1">
             {content.conditions.slice(0, 6).map((item, idx) => (
-              <div key={idx} className="slide4-item opacity-0 flex items-center space-x-4 bg-[#1A1F2E]/40 p-4 rounded-xl border border-gray-700/30">
-                <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#EBCB8B]/20 text-[#EBCB8B] flex items-center justify-center font-bold font-mono text-sm">
+              <div key={idx} className={`slide4-item opacity-0 flex items-center space-x-4 bg-[#1A1F2E]/40 rounded-xl border border-gray-700/30 ${isSimple ? 'p-6' : 'p-4'}`}>
+                <div className={`flex-shrink-0 rounded-full bg-[#EBCB8B]/20 text-[#EBCB8B] flex items-center justify-center font-bold font-mono ${isSimple ? 'w-12 h-12 text-xl' : 'w-8 h-8 text-sm'}`}>
                   {idx + 1}
                 </div>
                 <div>
-                  <h3 className="text-sm font-semibold text-[#F5F7FA]">{item.title}</h3>
+                  <h3 className={`font-semibold text-[#F5F7FA] ${isSimple ? 'text-xl' : 'text-sm'}`}>{item.title}</h3>
                   {!isSimple && <p className="text-[10px] text-gray-400 font-mono mt-1">{item.desc}</p>}
                 </div>
               </div>
             ))}
-            <div className="col-span-2 slide4-item opacity-0 flex items-center space-x-4 bg-[#1A1F2E]/40 p-4 rounded-xl border border-gray-700/30">
-              <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#EBCB8B]/20 text-[#EBCB8B] flex items-center justify-center font-bold font-mono text-sm">
+            <div className={`col-span-2 slide4-item opacity-0 flex items-center space-x-4 bg-[#1A1F2E]/40 rounded-xl border border-gray-700/30 ${isSimple ? 'p-6 justify-center' : 'p-4'}`}>
+              <div className={`flex-shrink-0 rounded-full bg-[#EBCB8B]/20 text-[#EBCB8B] flex items-center justify-center font-bold font-mono ${isSimple ? 'w-12 h-12 text-xl' : 'w-8 h-8 text-sm'}`}>
                 7
               </div>
               <div>
-                <h3 className="text-sm font-semibold text-[#F5F7FA]">{content.conditions[6].title}</h3>
+                <h3 className={`font-semibold text-[#F5F7FA] ${isSimple ? 'text-xl' : 'text-sm'}`}>{content.conditions[6].title}</h3>
                 {!isSimple && <p className="text-[10px] text-gray-400 font-mono mt-1">{content.conditions[6].desc}</p>}
               </div>
             </div>

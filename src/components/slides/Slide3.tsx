@@ -46,12 +46,12 @@ const Slide3: React.FC = () => {
 
   return (
     <div ref={containerRef} className="w-full h-full flex flex-col justify-center px-[5%] py-8 md:py-12">
-      <h2 className="slide3-title text-4xl font-bold text-[#F5F7FA] mb-4 opacity-0 text-center leading-tight">
+      <h2 className={`slide3-title font-bold text-[#F5F7FA] mb-4 opacity-0 text-center leading-tight ${isSimple ? 'text-6xl' : 'text-4xl'}`}>
         {content.title}
       </h2>
       {content.quote.prefix && (
         <div className="slide3-subtitle opacity-0 text-center mb-6">
-          <p className="text-lg text-[#F5F7FA] font-medium leading-relaxed bg-[#1A1F2E]/60 inline-block px-6 py-3 rounded-full border border-gray-700/50 backdrop-blur-sm shadow-lg">
+          <p className={`text-[#F5F7FA] font-medium leading-relaxed bg-[#1A1F2E]/60 inline-block rounded-full border border-gray-700/50 backdrop-blur-sm shadow-lg ${isSimple ? 'text-2xl px-8 py-4' : 'text-lg px-6 py-3'}`}>
             {content.quote.prefix}
           </p>
         </div>
@@ -59,13 +59,13 @@ const Slide3: React.FC = () => {
 
       <div className="flex w-full gap-12">
         <div className="w-1/2 flex flex-col justify-center">
-          <h3 className="slide3-title text-sm font-semibold text-[#8A7CF5] mb-6 tracking-widest opacity-0">{content.equationTitle}</h3>
+          <h3 className={`slide3-title font-semibold text-[#8A7CF5] mb-6 tracking-widest opacity-0 ${isSimple ? 'text-xl' : 'text-sm'}`}>{content.equationTitle}</h3>
           <div className="grid grid-cols-2 gap-4">
             {content.systems.map((sys, idx) => (
-              <div key={idx} className={`slide3-sys-box opacity-0 bg-[#1A1F2E]/60 p-5 rounded-xl border border-gray-700/50 backdrop-blur-sm flex flex-col ${idx === 4 ? 'col-span-2' : ''}`}>
-                <div className="flex items-center gap-3 mb-2">
-                  <span className="bg-[#8A7CF5]/20 text-[#8A7CF5] text-xs font-bold px-2 py-1 rounded">{sys.num}</span>
-                  <h4 className="text-[#F5F7FA] font-bold text-lg">{sys.title}</h4>
+              <div key={idx} className={`slide3-sys-box opacity-0 bg-[#1A1F2E]/60 rounded-xl border border-gray-700/50 backdrop-blur-sm flex flex-col ${idx === 4 ? 'col-span-2' : ''} ${isSimple ? 'p-8' : 'p-5'}`}>
+                <div className={`flex items-center gap-3 ${isSimple ? 'mb-0' : 'mb-2'}`}>
+                  <span className={`bg-[#8A7CF5]/20 text-[#8A7CF5] font-bold rounded ${isSimple ? 'text-lg px-3 py-1.5' : 'text-xs px-2 py-1'}`}>{sys.num}</span>
+                  <h4 className={`text-[#F5F7FA] font-bold ${isSimple ? 'text-3xl' : 'text-lg'}`}>{sys.title}</h4>
                 </div>
                 {!isSimple && <p className="text-gray-400 text-xs mt-1 leading-relaxed">{sys.desc}</p>}
               </div>
@@ -75,11 +75,11 @@ const Slide3: React.FC = () => {
 
         <div className="w-1/2 flex flex-col">
           <div className="slide3-chart opacity-0 bg-[#1A1F2E]/40 p-8 rounded-2xl border border-gray-700/30 backdrop-blur-sm flex-1 flex flex-col">
-            <h3 className="text-sm font-semibold text-[#8A7CF5] mb-8 tracking-widest">{content.maturityChart.title}</h3>
+            <h3 className={`font-semibold text-[#8A7CF5] tracking-widest ${isSimple ? 'text-xl mb-12' : 'text-sm mb-8'}`}>{content.maturityChart.title}</h3>
             
             <div className="flex-1 flex items-center justify-between">
               {/* Concentric Circles Chart */}
-              <div className="relative w-48 h-48 ml-4">
+              <div className={`relative ml-4 ${isSimple ? 'w-64 h-64' : 'w-48 h-48'}`}>
                 <svg className="w-full h-full transform -rotate-90" viewBox="0 0 100 100">
                   {/* Background tracks */}
                   {[45, 38, 31, 24, 17].map((r, i) => (
@@ -105,7 +105,7 @@ const Slide3: React.FC = () => {
                   })}
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center flex-col">
-                  <span className="text-[#F5F7FA] font-bold text-sm tracking-widest">{content.maturityChart.centerTitle}</span>
+                  <span className={`text-[#F5F7FA] font-bold tracking-widest ${isSimple ? 'text-2xl' : 'text-sm'}`}>{content.maturityChart.centerTitle}</span>
                   {!isSimple && <span className="text-gray-400 text-xs">{content.maturityChart.centerSubtitle}</span>}
                 </div>
               </div>
@@ -115,10 +115,10 @@ const Slide3: React.FC = () => {
                 {content.maturityChart.items.map((m, i) => (
                   <div key={i} className="flex items-center justify-between">
                     <div className="flex items-center gap-3">
-                      <div className="w-3 h-3 rounded-full" style={{ backgroundColor: m.color }}></div>
-                      <span className="text-gray-300 text-sm">{m.label}</span>
+                      <div className={`rounded-full ${isSimple ? 'w-4 h-4' : 'w-3 h-3'}`} style={{ backgroundColor: m.color }}></div>
+                      <span className={`text-gray-300 ${isSimple ? 'text-xl' : 'text-sm'}`}>{m.label}</span>
                     </div>
-                    <span className="text-[#F5F7FA] font-mono font-bold">{m.score}</span>
+                    <span className={`text-[#F5F7FA] font-mono font-bold ${isSimple ? 'text-2xl' : ''}`}>{m.score}</span>
                   </div>
                 ))}
               </div>

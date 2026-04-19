@@ -9,6 +9,7 @@ const Slide7: React.FC = () => {
   const content = presentationContent.slide7;
   const location = useLocation();
   const isNormal = location.pathname === '/normal';
+  const isSimple = location.pathname === '/simple';
 
   useEffect(() => {
     if (containerRef.current) {
@@ -62,12 +63,12 @@ const Slide7: React.FC = () => {
     <div ref={containerRef} className="w-full h-full flex flex-col items-center justify-center px-[5%] py-8 md:py-12 relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(#ffffff0a_1px,transparent_1px)] [background-size:24px_24px] pointer-events-none"></div>
       
-      <h2 className="slide7-title text-4xl font-bold text-[#F5F7FA] mb-4 leading-tight opacity-0 text-center relative z-30">
+      <h2 className={`slide7-title font-bold text-[#F5F7FA] mb-4 leading-tight opacity-0 text-center relative z-30 ${isSimple ? 'text-6xl' : 'text-4xl'}`}>
         {content.title}
       </h2>
       {content.quote.prefix && (
         <div className="slide7-subtitle opacity-0 text-center mb-6 relative z-30">
-          <p className="text-lg text-[#F5F7FA] font-medium leading-relaxed bg-[#1A1F2E]/60 inline-block px-6 py-3 rounded-full border border-gray-700/50 backdrop-blur-sm shadow-lg">
+          <p className={`text-[#F5F7FA] font-medium leading-relaxed bg-[#1A1F2E]/60 inline-block rounded-full border border-gray-700/50 backdrop-blur-sm shadow-lg ${isSimple ? 'text-2xl px-8 py-4' : 'text-lg px-6 py-3'}`}>
             {content.quote.prefix}
           </p>
         </div>
@@ -125,8 +126,8 @@ const Slide7: React.FC = () => {
               }}
             >
               <div className="flex items-center gap-2 mb-2 flex-shrink-0">
-                <div className="w-1.5 h-1.5 rounded-full transition-transform group-hover:scale-150" style={{ backgroundColor: item.color, boxShadow: `0 0 8px ${item.color}` }}></div>
-                <span className="text-[10px] lg:text-xs text-gray-200 font-semibold tracking-wide truncate">{item.title}</span>
+                <div className={`rounded-full transition-transform group-hover:scale-150 ${isSimple ? 'w-2.5 h-2.5' : 'w-1.5 h-1.5'}`} style={{ backgroundColor: item.color, boxShadow: `0 0 8px ${item.color}` }}></div>
+                <span className={`text-gray-200 font-semibold tracking-wide truncate ${isSimple ? 'text-base lg:text-lg' : 'text-[10px] lg:text-xs'}`}>{item.title}</span>
               </div>
               <div className="w-full flex-1 min-h-0 relative rounded-lg overflow-hidden bg-black/60 border border-gray-800/60 group-hover:border-[#8A7CF5]/50 transition-colors">
                 <img src={item.img} alt={item.title} className="absolute inset-0 w-full h-full object-contain" />
@@ -164,7 +165,7 @@ const Slide7: React.FC = () => {
             return (
               <div
                 key={idx}
-                className="slide7-ring-item opacity-0 absolute text-center w-20 text-sm text-indigo-100 font-medium whitespace-pre-line leading-snug"
+                className={`slide7-ring-item opacity-0 absolute text-center text-indigo-100 font-medium whitespace-pre-line leading-snug ${isSimple ? 'w-28 text-lg' : 'w-20 text-sm'}`}
                 style={{ transform: `translate(${x}px, ${y}px)` }}
               >
                 {sys.name}

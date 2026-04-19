@@ -17,27 +17,27 @@ const Slide6: React.FC = () => {
     gap: isNormal ? "gap-10" : "gap-8",
     panelP: isNormal ? "p-7" : "p-5",
     badge: isNormal ? "px-3 py-1 text-[10px]" : "px-2 py-0.5 text-[9px]",
-    statement: isNormal ? "text-[22px] leading-[1.55] p-5" : "text-[17px] leading-[1.4] p-3.5",
-    stepP: isNormal ? "px-4 py-4" : "px-2 py-2.5",
-    stepTitle: isNormal ? "text-xl mt-2" : "text-base mt-1",
-    stepIcon: isNormal ? "w-4 h-4" : "w-3 h-3",
+    statement: isSimple ? "text-[26px] leading-[1.6] p-8" : (isNormal ? "text-[22px] leading-[1.55] p-5" : "text-[17px] leading-[1.4] p-3.5"),
+    stepP: isSimple ? "px-6 py-6" : (isNormal ? "px-4 py-4" : "px-2 py-2.5"),
+    stepTitle: isSimple ? "text-3xl mt-4" : (isNormal ? "text-xl mt-2" : "text-base mt-1"),
+    stepIcon: isSimple ? "w-6 h-6" : (isNormal ? "w-4 h-4" : "w-3 h-3"),
     chip: isNormal ? "px-3 py-3 text-[12px] leading-5" : "px-2 py-2 text-[11px] leading-snug",
-    scarcityP: isNormal ? "p-5 mt-5" : "p-3.5 mt-3",
-    scarcityBadge: isNormal ? "text-[10px] mb-2" : "text-[9px] mb-1.5",
-    scarcityTitle: isNormal ? "text-lg mb-2" : "text-base mb-1.5",
+    scarcityP: isSimple ? "p-8 mt-8" : (isNormal ? "p-5 mt-5" : "p-3.5 mt-3"),
+    scarcityBadge: isSimple ? "text-[12px] mb-3" : (isNormal ? "text-[10px] mb-2" : "text-[9px] mb-1.5"),
+    scarcityTitle: isSimple ? "text-2xl mb-3" : (isNormal ? "text-lg mb-2" : "text-base mb-1.5"),
     scarcityDesc: isNormal ? "text-[13px] leading-6" : "text-xs leading-5",
-    scarcityFooter: isNormal ? "text-[12px] mt-3" : "text-[11px] mt-2",
+    scarcityFooter: isSimple ? "text-[16px] mt-4" : (isNormal ? "text-[12px] mt-3" : "text-[11px] mt-2"),
     skylineWrap: isNormal ? "pt-5 mt-auto" : "pt-3 mt-auto",
     skylineH: isNormal ? "h-12 mt-4" : "h-6 mt-3",
-    trendBadge: isNormal ? "text-xs" : "text-[10px]",
-    trendTitle: isNormal ? "text-[24px] mt-2" : "text-[20px] mt-1.5",
+    trendBadge: isSimple ? "text-sm" : (isNormal ? "text-xs" : "text-[10px]"),
+    trendTitle: isSimple ? "text-[32px] mt-3" : (isNormal ? "text-[24px] mt-2" : "text-[20px] mt-1.5"),
     trendNoteWrap: isNormal ? "mb-4" : "mb-3",
-    trendNoteText: isNormal ? "text-[11px]" : "text-[9px]",
-    trendGap: isNormal ? "gap-4" : "gap-2.5",
-    itemP: isNormal ? "p-5 gap-4" : "p-3.5 gap-3",
-    iconWrap: isNormal ? "w-10 h-10" : "w-8 h-8",
-    icon: isNormal ? "w-4 h-4" : "w-3.5 h-3.5",
-    itemTitle: isNormal ? "text-[21px]" : "text-[17px]",
+    trendNoteText: isSimple ? "text-[14px]" : (isNormal ? "text-[11px]" : "text-[9px]"),
+    trendGap: isSimple ? "gap-6" : (isNormal ? "gap-4" : "gap-2.5"),
+    itemP: isSimple ? "p-6 gap-6 items-center" : (isNormal ? "p-5 gap-4 items-start" : "p-3.5 gap-3 items-start"),
+    iconWrap: isSimple ? "w-14 h-14" : (isNormal ? "w-10 h-10" : "w-8 h-8"),
+    icon: isSimple ? "w-6 h-6" : (isNormal ? "w-4 h-4" : "w-3.5 h-3.5"),
+    itemTitle: isSimple ? "text-[26px]" : (isNormal ? "text-[21px]" : "text-[17px]"),
     itemDesc: isNormal ? "text-[13px] leading-6 mt-1.5" : "text-xs leading-5 mt-1"
   };
 
@@ -104,12 +104,12 @@ const Slide6: React.FC = () => {
         <div className="absolute bottom-16 right-1/4 w-80 h-80 bg-[#7FE7D8]/6 blur-[120px] rounded-full"></div>
       </div>
 
-      <h2 className="slide6-title text-4xl font-bold text-[#F5F7FA] mb-4 opacity-0 text-center leading-tight relative z-10">
+      <h2 className={`slide6-title font-bold text-[#F5F7FA] mb-4 opacity-0 text-center leading-tight relative z-10 ${isSimple ? 'text-6xl' : 'text-4xl'}`}>
         {content.title}
       </h2>
       {content.quote.prefix && (
         <div className="slide6-subtitle opacity-0 text-center mb-6 relative z-10">
-          <p className="text-lg text-[#F5F7FA] font-medium leading-relaxed bg-[#1A1F2E]/60 inline-block px-6 py-3 rounded-full border border-gray-700/50 backdrop-blur-sm shadow-lg">
+          <p className={`text-[#F5F7FA] font-medium leading-relaxed bg-[#1A1F2E]/60 inline-block rounded-full border border-gray-700/50 backdrop-blur-sm shadow-lg ${isSimple ? 'text-2xl px-8 py-4' : 'text-lg px-6 py-3'}`}>
             {content.quote.prefix}
           </p>
         </div>

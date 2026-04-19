@@ -1,9 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import anime from 'animejs';
+import { useLocation } from 'react-router-dom';
 import { presentationContent } from '../../content/presentation';
 
 const Slide3: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+  const isSimple = location.pathname === '/simple';
   const content = presentationContent.slide3;
 
   useEffect(() => {
@@ -64,14 +67,14 @@ const Slide3: React.FC = () => {
                   <span className="bg-[#8A7CF5]/20 text-[#8A7CF5] text-xs font-bold px-2 py-1 rounded">{sys.num}</span>
                   <h4 className="text-[#F5F7FA] font-bold text-lg">{sys.title}</h4>
                 </div>
-                <p className="text-gray-400 text-xs mt-1 leading-relaxed">{sys.desc}</p>
+                {!isSimple && <p className="text-gray-400 text-xs mt-1 leading-relaxed">{sys.desc}</p>}
               </div>
             ))}
           </div>
         </div>
 
-        <div className="w-1/2 flex flex-col justify-center">
-          <div className="slide3-chart opacity-0 bg-[#1A1F2E]/40 p-8 rounded-2xl border border-gray-700/30 backdrop-blur-sm h-full flex flex-col">
+        <div className="w-1/2 flex flex-col">
+          <div className="slide3-chart opacity-0 bg-[#1A1F2E]/40 p-8 rounded-2xl border border-gray-700/30 backdrop-blur-sm flex-1 flex flex-col">
             <h3 className="text-sm font-semibold text-[#8A7CF5] mb-8 tracking-widest">{content.maturityChart.title}</h3>
             
             <div className="flex-1 flex items-center justify-between">
@@ -103,7 +106,7 @@ const Slide3: React.FC = () => {
                 </svg>
                 <div className="absolute inset-0 flex items-center justify-center flex-col">
                   <span className="text-[#F5F7FA] font-bold text-sm tracking-widest">{content.maturityChart.centerTitle}</span>
-                  <span className="text-gray-400 text-xs">{content.maturityChart.centerSubtitle}</span>
+                  {!isSimple && <span className="text-gray-400 text-xs">{content.maturityChart.centerSubtitle}</span>}
                 </div>
               </div>
 

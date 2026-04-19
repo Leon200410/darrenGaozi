@@ -1,9 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import anime from 'animejs';
+import { useLocation } from 'react-router-dom';
 import { presentationContent } from '../../content/presentation';
 
 const Slide2: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+  const isSimple = location.pathname === '/simple';
   const content = presentationContent.slide2;
 
   useEffect(() => {
@@ -87,7 +90,7 @@ const Slide2: React.FC = () => {
             {content.items.map((item, idx) => (
               <div key={idx} className="slide2-item opacity-0 bg-[#1A1F2E]/40 p-5 rounded-xl border border-gray-700/30 flex flex-col justify-center">
                 <h4 className="text-[#F5F7FA] font-semibold text-lg mb-1">{item.title}</h4>
-                <p className="text-gray-400 text-sm">{item.desc}</p>
+                {!isSimple && <p className="text-gray-400 text-sm">{item.desc}</p>}
               </div>
             ))}
           </div>

@@ -1,9 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 import anime from 'animejs';
+import { useLocation } from 'react-router-dom';
 import { presentationContent } from '../../content/presentation';
 
 const Slide4: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const location = useLocation();
+  const isSimple = location.pathname === '/simple';
   const content = presentationContent.slide4;
 
   useEffect(() => {
@@ -56,8 +59,8 @@ const Slide4: React.FC = () => {
 
       <div className="flex w-full gap-12">
         {/* Left: Radar Chart Box */}
-        <div className="w-5/12 flex flex-col justify-center">
-          <div className="slide4-radar opacity-0 bg-[#1A1F2E]/60 p-8 rounded-2xl border border-gray-700/50 backdrop-blur-sm h-full flex flex-col items-center justify-center">
+        <div className="w-5/12 flex flex-col">
+          <div className="slide4-radar opacity-0 bg-[#1A1F2E]/60 p-8 rounded-2xl border border-gray-700/50 backdrop-blur-sm flex-1 flex flex-col items-center justify-center">
             <h3 className="text-sm font-semibold text-[#EBCB8B] mb-10 tracking-widest w-full text-left">{content.radarTitle}</h3>
             <div className="relative w-64 h-64 flex items-center justify-center">
               {/* Radar Chart Mock (SVG Heptagon) */}
@@ -96,8 +99,8 @@ const Slide4: React.FC = () => {
         </div>
 
         {/* Right: 7 Conditions */}
-        <div className="w-7/12 flex flex-col items-center gap-y-3">
-          <div className="grid grid-cols-2 gap-x-6 gap-y-3 w-full">
+        <div className="w-7/12 flex flex-col">
+          <div className="grid grid-cols-2 grid-rows-4 gap-x-6 gap-y-4 w-full h-full flex-1">
             {content.conditions.slice(0, 6).map((item, idx) => (
               <div key={idx} className="slide4-item opacity-0 flex items-center space-x-4 bg-[#1A1F2E]/40 p-4 rounded-xl border border-gray-700/30">
                 <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#EBCB8B]/20 text-[#EBCB8B] flex items-center justify-center font-bold font-mono text-sm">
@@ -105,19 +108,17 @@ const Slide4: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold text-[#F5F7FA]">{item.title}</h3>
-                  <p className="text-[10px] text-gray-400 font-mono mt-1">{item.desc}</p>
+                  {!isSimple && <p className="text-[10px] text-gray-400 font-mono mt-1">{item.desc}</p>}
                 </div>
               </div>
             ))}
-          </div>
-          <div className="w-full mt-1">
-            <div className="slide4-item opacity-0 flex items-center space-x-4 bg-[#1A1F2E]/40 p-4 rounded-xl border border-gray-700/30 w-full">
+            <div className="col-span-2 slide4-item opacity-0 flex items-center space-x-4 bg-[#1A1F2E]/40 p-4 rounded-xl border border-gray-700/30">
               <div className="flex-shrink-0 w-8 h-8 rounded-full bg-[#EBCB8B]/20 text-[#EBCB8B] flex items-center justify-center font-bold font-mono text-sm">
                 7
               </div>
               <div>
                 <h3 className="text-sm font-semibold text-[#F5F7FA]">{content.conditions[6].title}</h3>
-                <p className="text-[10px] text-gray-400 font-mono mt-1">{content.conditions[6].desc}</p>
+                {!isSimple && <p className="text-[10px] text-gray-400 font-mono mt-1">{content.conditions[6].desc}</p>}
               </div>
             </div>
           </div>

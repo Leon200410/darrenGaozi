@@ -70,6 +70,15 @@ function App() {
           </div>
         </div>
       } />
+      <Route path="/simple" element={
+        <div className="w-screen h-screen bg-[#0B0F1A] flex items-center justify-center overflow-hidden">
+          <div className="w-full h-full aspect-video max-w-none relative overflow-hidden">
+            <PageContainer className="w-full h-full p-0">
+              <Presentation isCenter={true} />
+            </PageContainer>
+          </div>
+        </div>
+      } />
     </Routes>
   );
 }

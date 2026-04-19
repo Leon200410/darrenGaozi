@@ -8,6 +8,7 @@ const Slide6: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const isNormal = location.pathname === '/normal';
+  const isSimple = location.pathname === '/simple';
   const content = presentationContent.slide6;
   const trendIcons = [TrendingUp, Building2, ShieldCheck, Landmark];
   const trendAccents = ['#F6D38B', '#7FE7D8', '#8AA5FF', '#F2A65A'];
@@ -154,9 +155,9 @@ const Slide6: React.FC = () => {
               <h3 className={`font-bold text-[#FDF1D4] leading-snug ${S.scarcityTitle}`}>
                 {content.scarcity.title}
               </h3>
-              <p className={`text-[#C9D3E2] ${S.scarcityDesc}`}>
+              {!isSimple && <p className={`text-[#C9D3E2] ${S.scarcityDesc}`}>
                 {content.scarcity.description}
-              </p>
+              </p>}
               <p className={`font-medium text-[#F6D38B] ${S.scarcityFooter}`}>
                 {content.scarcity.footer}
               </p>
@@ -210,7 +211,7 @@ const Slide6: React.FC = () => {
                   </div>
                   <div className="min-w-0">
                     <h4 className={`font-bold text-[#F5F7FA] leading-tight ${S.itemTitle}`}>{trend.title}</h4>
-                    <p className={`text-gray-400 ${S.itemDesc}`}>{trend.desc}</p>
+                    {!isSimple && <p className={`text-gray-400 ${S.itemDesc}`}>{trend.desc}</p>}
                   </div>
                 </div>
               );
